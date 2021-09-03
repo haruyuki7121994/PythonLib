@@ -21,6 +21,8 @@
                     <li class="font-weight-bold">Sử dụng <code>split()</code></li>
                     <li class="font-weight-bold">Sử dung <kbd>List comprehension</kbd></li>
                 </ul>
+
+                <br>
                 <p><code>split()</code> Hàm này nhận được nhiều giá trị từ người dùng. Nó sẽ tách đầu vào đã cho bởi dấu phân tách được chỉ đinh. Nếu dấu phân cách không được cung cấp thì <kbd>white space</kbd> sẽ được sử dụng. Nói chung, <code>split()</code> để chia một chuỗi nên có thể sử dụng để lấy nhiều giá trị đầu vào.</p>
                 <pre style="max-height: 600px;"><code class="python hljs">Syntax: </code><code class="hljs-keyword">split(separator, maxsplit)</code></pre>
                 <pre style="max-height: 600px;"><code class="python hljs"><span class="hljs-meta">&gt;&gt;&gt; </span>x, y = <span class="hljs-keyword">input</span>(<span class="hljs-string">'Enter a two value: '</span>).<span class="hljs-keyword">split</span>()
@@ -34,6 +36,7 @@ Enter a multiple value: <span class="hljs-number">10 20 30 40 50 60</span>
 <span class="hljs-meta">&gt;&gt;&gt; </span>x
 <span class="hljs-string">[10, 20, 30, 40, 50, 60]</span></code></pre>
 
+                <hr>
                 <p><kbd>List comprehension</kbd> là một cách đơn giản để xác định và tạo danh sách trong Python. Chúng ta có thể tạo danh sách giống như các câu lệnh toán học chỉ trong một dòng. Nó cũng được sử dụng để nhận nhiều giá trị.</p>
                 <pre style="max-height: 600px;"><code class="python hljs"><span class="hljs-meta">&gt;&gt;&gt; </span>x, y = [<span class="hljs-keyword">int</span>(<span class="hljs-number">x</span>) <span class="hljs-keyword">for</span> <span class="hljs-number">x</span> <span class="hljs-keyword">in</span> <span class="hljs-keyword">input</span>(<span class="hljs-string">'Enter a two value: '</span>).<span class="hljs-keyword">split</span>()]
 Enter a value: <span class="hljs-number">10 20</span>

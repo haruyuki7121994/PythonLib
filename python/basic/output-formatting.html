@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Output Formatting</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="../../css/style.css">
+</head>
+<body>
+    <!--    HEADER-->
+    <section id="header-section"></section>
+    <br>
+    <!--    END HEADER-->
+
+    <!--    MAIN CONTENT-->
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <p>Có một số cách để trình bày kết quả đầu ra, dữ liệu có thể được in ra dưới dạng <kbd>human-readable form</kbd> hoặc ghi vào file để sử dụng trong tương lai hoặc một vài cách khác. Một số cách để định dạng output:</p>
+                <ul>
+                    <li>Sử dụng <kbd>formatted string literals</kbd> bắt đầu chuỗi với ký tự <kbd>f</kbd> hoặc <kbd>F</kbd> trước dấu ngoặc kép mở đầu hoặc dấu ngoặc kép ba</li>
+                    <li>Sử dụng <kbd>String modulo operator(%)</kbd></li>
+                    <li>Sử dụng <code>str.format()</code> giúp người dùng có được output đẹp hơn</li>
+                    <li>Sử dụng tất cả việc xử lý chuỗi thông qua các thao tác như cắt, nối, tạo padding... để tạo bất kỳ bố cục nào mà người dùng muốn.</li>
+                </ul>
+
+                <br>
+                <p><kbd>formatted string literals</kbd> PEP 498 đã giới thiệu một cơ chế định dạng chuỗi mới gọi là Nội suy chuỗi ký tự hoặc chuỗi F (vì ký tự f đứng đầu chuỗi ký tự). Ý tưởng là làm cho việc nội suy chuỗi trở nên đơn giản hơn. Để tạo chuỗi f, đặt tiền tố f trước chuỗi ký tự. Bản thân chuỗi có thể được định dạng như hàm <code>str.format()</code>.</p>
+                <pre style="max-height: 600px;"><code class="python hljs"><span class="hljs-meta">&gt;&gt;&gt; </span>name = <span class="hljs-string">'Khoa'</span>; age = <span class="hljs-number">25</span>; height = <span class="hljs-number">1.7</span>
+<span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-keyword">print</span>(<span class="hljs-string">f"Hello, My name is {name}, I'm {age:d} years old, My height is {height:.2f}cm"</span>)
+Hello, My name is Khoa, I'm 27 years old, My height is 1.70cm</code></pre>
+
+                <hr>
+                <p><kbd>String modulo operator(%)</kbd> Toán tử % cũng có thể được sử dụng để định dạng chuỗi. Nó diễn giải đối số bên trái giống như một định dạng kiểu <code>printf()</code> được áp dụng cho đối số bên phải. Trong Python, không có hàm <code>printf()</code> nhưng chức năng của printf cổ được chứa trong Python. Với mục đích này, toán tử modulo % được nạp chồng bởi lớp chuỗi để định dạng chuỗi. Do đó, thường được gọi là toán tử modulo chuỗi hoặc toán tử modulus.</p>
+                <pre style="max-height: 600px;"><code class="python hljs">Syntax: </code><code class="hljs-keyword">%[flags][width][.precision]type</code><code class="python hljs">
+<span class="font-weight-bold">%2d:</span> in 2 ký tự - số nguyên
+<span class="font-weight-bold">%5.2f:</span> in 5 ký tự - 2 ký tự phần thập phân - số thực
+</code></pre>
+                <pre style="max-height: 600px;"><code class="python hljs"><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-keyword">print</span>(<span class="hljs-string">"Total students: %3d, Boys: %2d, Portal: %5.2f"</span> % (<span class="hljs-number">240</span>, <span class="hljs-number">120</span>, <span class="hljs-number">5.333</span>))
+Total students: 240, Boys: 120, Portal: 5.33</code></pre>
+
+                <hr>
+                <p><code>str.format()</code> được thêm vào Python(2.6). Người dùng sử dụng {} để đánh dấu vị trí một biến sẽ được thay thế và có thể cung cấp định dạng chi tiết bởi người sử dụng.</p>
+                <pre style="max-height: 600px;"><code class="python hljs"><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-keyword">print</span>(<span class="hljs-string">"Do {} love {}?"</span>.<span class="hljs-keyword">format</span>(<span class="hljs-string">'you'</span>, <span class="hljs-string">'Python'</span>))
+Do You love Python?
+
+<span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-keyword">print</span>(<span class="hljs-string">"First argument: {1:3d}, second argument: {0:5.2f}"</span>.<span class="hljs-keyword">format</span>(<span class="hljs-number">47.22</span>, <span class="hljs-number">11</span>))
+First argument:  11, second argument: 47.22
+
+<span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-keyword">print</span>(<span class="hljs-string">"Boys: {b:2d}, Girls: {g:2d}"</span>.<span class="hljs-keyword">format</span>(b=<span class="hljs-number">22</span>, g=<span class="hljs-number">15</span>))
+Boys: 22, Girls: 15
+
+<span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-keyword">print</span>(<span class="hljs-string">"Number one portal is {0}, {1} and {other}"</span>.<span class="hljs-keyword">format</span>(<span class="hljs-string">'I'</span>, <span class="hljs-string">'Love'</span>, other=<span class="hljs-string">'You'</span>))
+Number one portal is I, Love and You</code></pre>
+
+                <pre style="max-height: 600px;"><code class="python hljs"><span class="hljs-meta">&gt;&gt;&gt; </span>tab = {'Boys': 32, 'Girls': 15, 'Total': 47}
+<span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-keyword">print</span>(<span class="hljs-string">"Boys: {0[Boys]:d}, Girls: {0[Girls]:d}, Total: {0[Total]:d}"</span>.<span class="hljs-keyword">format</span>(tab))
+Boys: 32, Girls: 15, Total: 47
+
+<span class="hljs-meta">&gt;&gt;&gt; </span>data = <span class="hljs-keyword">dict</span>(python=<span class="hljs-string">"Python"</span>, csharp=<span class="hljs-string">"C#"</span>)
+<span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-keyword">print</span>(<span class="hljs-string">"I love {python} and {csharp}"</span>.<span class="hljs-keyword">format</span>(**data))
+I love Python and C#</code></pre>
+
+                <hr>
+                <p>Sử dụng một số phương thức String như <code>str.ljust()</code>, <code>str.rjust()</code>, <code>str.centre()</code></p>
+                <pre style="max-height: 600px;"><code class="python hljs"><span class="hljs-meta">&gt;&gt;&gt; </span>str = " I love Python "
+<span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-keyword">print</span>(str.center(<span class="hljs-number">40</span>, <span class="hljs-string">"#"</span>))
+############# I love Python ##############
+
+<span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-keyword">print</span>(str.ljust(<span class="hljs-number">40</span>, <span class="hljs-string">"-"</span>))
+ I love Python -------------------------
+
+<span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-keyword">print</span>(str.rjust(<span class="hljs-number">40</span>, <span class="hljs-string">"-"</span>))
+------------------------- I love Python </code></pre>
+            </div>
+            <div class="col-md-12">
+                <p>Nguồn:</p>
+                <ul>
+                    <li><a href="https://www.geeksforgeeks.org/python-output-formatting/?ref=lbp">Geeksforgeeks</a></li>
+                    <li><a href="https://www.programiz.com/python-programming/input-output-import">Programiz</a></li>
+                    <li><a href="https://www.geeksforgeeks.org/formatted-string-literals-f-strings-python/">Formatted String Literals</a></li>
+                    <li><a href="https://www.geeksforgeeks.org/python-string-format-method/">String Format</a></li>
+                    <li><a href="https://www.geeksforgeeks.org/python-string-ljust-rjust-center/">String LJust, RJust, Center</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!--    END MAIN CONTENT-->
+
+    <input type="hidden" id="url-header" value="../../content.json">
+
+    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="../../js/main.js"></script>
+</body>
+</html>
