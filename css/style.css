@@ -39,6 +39,10 @@ code {
     color: #98c379;
 }
 
+.hljs-import {
+    color: red;
+}
+
 .txt-large {
     font-size: 20px;
 }

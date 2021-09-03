@@ -1,10 +1,76 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <meta charset="UTF-8">
+    <title>Multi Input</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="../../css/style.css">
 </head>
 <body>
-$END$
+    <!--    HEADER-->
+    <section id="header-section"></section>
+    <br>
+    <!--    END HEADER-->
+
+    <!--    MAIN CONTENT-->
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <p>Dev thường muốn người dùng nhập nhiều giá trị trong 1 dòng. Nhưng trong Python, người dùng có thể lấy nhiều giá trị trong một dòng bằng 2 phương pháp:</p>
+                <ul>
+                    <li class="font-weight-bold">Sử dụng <code>split()</code></li>
+                    <li class="font-weight-bold">Sử dung <kbd>List comprehension</kbd></li>
+                </ul>
+                <p><code>split()</code> Hàm này nhận được nhiều giá trị từ người dùng. Nó sẽ tách đầu vào đã cho bởi dấu phân tách được chỉ đinh. Nếu dấu phân cách không được cung cấp thì <kbd>white space</kbd> sẽ được sử dụng. Nói chung, <code>split()</code> để chia một chuỗi nên có thể sử dụng để lấy nhiều giá trị đầu vào.</p>
+                <pre style="max-height: 600px;"><code class="python hljs">Syntax: </code><code class="hljs-keyword">split(separator, maxsplit)</code></pre>
+                <pre style="max-height: 600px;"><code class="python hljs"><span class="hljs-meta">&gt;&gt;&gt; </span>x, y = <span class="hljs-keyword">input</span>(<span class="hljs-string">'Enter a two value: '</span>).<span class="hljs-keyword">split</span>()
+Enter a value: <span class="hljs-number">10 20</span>
+<span class="hljs-meta">&gt;&gt;&gt; </span>x
+<span class="hljs-string">'10'</span>
+<span class="hljs-meta">&gt;&gt;&gt; </span>y
+<span class="hljs-string">'20'</span></code></pre>
+                <pre style="max-height: 600px;"><code class="python hljs"><span class="hljs-meta">&gt;&gt;&gt; </span>x = <span class="hljs-keyword">list</span>(<span class="hljs-keyword">map</span>(<span class="hljs-keyword">int</span>, <span class="hljs-keyword">input</span>(<span class="hljs-string">'Enter a multiple value: '</span>).<span class="hljs-keyword">split</span>()
+Enter a multiple value: <span class="hljs-number">10 20 30 40 50 60</span>
+<span class="hljs-meta">&gt;&gt;&gt; </span>x
+<span class="hljs-string">[10, 20, 30, 40, 50, 60]</span></code></pre>
+
+                <p><kbd>List comprehension</kbd> là một cách đơn giản để xác định và tạo danh sách trong Python. Chúng ta có thể tạo danh sách giống như các câu lệnh toán học chỉ trong một dòng. Nó cũng được sử dụng để nhận nhiều giá trị.</p>
+                <pre style="max-height: 600px;"><code class="python hljs"><span class="hljs-meta">&gt;&gt;&gt; </span>x, y = [<span class="hljs-keyword">int</span>(<span class="hljs-number">x</span>) <span class="hljs-keyword">for</span> <span class="hljs-number">x</span> <span class="hljs-keyword">in</span> <span class="hljs-keyword">input</span>(<span class="hljs-string">'Enter a two value: '</span>).<span class="hljs-keyword">split</span>()]
+Enter a value: <span class="hljs-number">10 20</span>
+<span class="hljs-meta">&gt;&gt;&gt; </span>x
+<span class="hljs-string">'10'</span>
+<span class="hljs-meta">&gt;&gt;&gt; </span>y
+<span class="hljs-string">'20'</span></code></pre>
+                <pre style="max-height: 600px;"><code class="python hljs"><span class="hljs-meta">&gt;&gt;&gt; </span>x = [<span class="hljs-keyword">int</span>(<span class="hljs-number">x</span>) <span class="hljs-keyword">for</span> <span class="hljs-number">x</span> <span class="hljs-keyword">in</span> <span class="hljs-keyword">input</span>(<span class="hljs-string">'Enter a multiple value: '</span>).<span class="hljs-keyword">split</span>()]
+Enter a multiple value: <span class="hljs-number">10 20 30 40 50 60</span>
+<span class="hljs-meta">&gt;&gt;&gt; </span>x
+<span class="hljs-string">[10, 20, 30, 40, 50, 60]</span></code></pre>
+
+                <p><span class="font-weight-bold">Lưu ý: </span> Các ví dụ trên lấy đầu vào được phân tách bằng <kbd>white space</kbd> Trong trường hợp muốn phân tách bằng dấu <kbd>,</kbd> chúng ta có thể truyền tham số đầu tiên của hàm <code>split(separator)</code>.</p>
+                <pre style="max-height: 600px;"><code class="python hljs"><span class="hljs-meta">&gt;&gt;&gt; </span>x, y = [<span class="hljs-keyword">int</span>(<span class="hljs-number">x</span>) <span class="hljs-keyword">for</span> <span class="hljs-number">x</span> <span class="hljs-keyword">in</span> <span class="hljs-keyword">input</span>(<span class="hljs-string">'Enter a two value: '</span>).<span class="hljs-keyword">split</span>(<span class="hljs-string">','</span>)]
+Enter a value: <span class="hljs-number">10,20</span>
+<span class="hljs-meta">&gt;&gt;&gt; </span>x
+<span class="hljs-string">'10'</span>
+<span class="hljs-meta">&gt;&gt;&gt; </span>y
+<span class="hljs-string">'20'</span></code></pre>
+            </div>
+            <div class="col-md-12">
+                <p>Nguồn:</p>
+                <ul>
+                    <li><a href="https://www.geeksforgeeks.org/taking-multiple-inputs-from-user-in-python/?ref=lbp">Geeksforgeeks</a></li>
+                    <li><a href="https://www.geeksforgeeks.org/python-string-split/">split()</a></li>
+                    <li><a href="https://www.geeksforgeeks.org/python-list-comprehension-and-slicing/">List comprehension</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!--    END MAIN CONTENT-->
+
+    <input type="hidden" id="url-header" value="../../content.json">
+
+    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="../../js/main.js"></script>
 </body>
 </html>

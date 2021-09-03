@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Output Function</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="../../css/style.css">
+</head>
+<body>
+    <!--    HEADER-->
+    <section id="header-section"></section>
+    <br>
+    <!--    END HEADER-->
+
+    <!--    MAIN CONTENT-->
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <p>Cách đơn giản nhất để in kết quả là sử dụng hàm <code>print()</code> trong đó có thể chuyển 0 hoặc nhiều biểu thức được phân tách bằng <kbd>,</kbd> Hàm này chuyển đổi các biểu thức thành một chuỗi trước khi ghi ra màn hình.</p>
+                <pre style="max-height: 600px;"><code class="python hljs">Syntax: </code><code class="hljs-keyword">print(*objects, sep=' ', end='\n', file=sys.stdout, flush=False)</code>
+<code class="python hljs"><span class="font-weight-bold">Parameters: </span>
+    <span class="font-weight-bold">*objects: </span><span>Bất kỳ giá trị nào, và bao nhiêu tùy thích. Sẽ được chuyển đổi thành chuỗi trước khi được in ra.</span>
+    <span class="font-weight-bold">sep='separator': </span><span>(Optional) Chỉ định cách tách các đối tượng nếu đối tượng có nhiều hơn một. Default = ' '</span>
+    <span class="font-weight-bold">end='end': </span><span>(Optional) Chỉ định cách in ra ở cuối dòng. Default = '\n'</span>
+    <span class="font-weight-bold">file: </span><span>(Optional) Đối tượng với phương thức ghi. Default = sys.stdout</span>
+    <span class="font-weight-bold">flush: </span><span>(Optional) Là một Boolean, chỉ định xem đầu ra là flushed (True) hay buffered (False). Default = False</span>
+</code></pre>
+                <p class="font-weight-bold">Example: </p>
+                <pre class="python-exec" style="max-height: 600px;"><code class="python hljs"><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-keyword">print</span>(<span class="hljs-string">'Example <span class="hljs-number">\n</span>This sentence is output to the screen'</span>)
+Example
+This sentence is output to the screen</code></pre>
+                <pre class="python-exec" style="max-height: 600px;"><code class="python hljs"><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-keyword">print</span>(<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>, sep=<span class="hljs-string">'*'</span>)
+1*2*3*4
+</code></pre>
+                <pre class="python-exec" style="max-height: 600px;"><code class="python hljs"><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-keyword">print</span>(<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>, sep=<span class="hljs-string">'#'</span>, end=<span class="hljs-string">'&amp;'</span>)
+1*2*3*4&
+</code></pre>
+                <p>Trái với suy nghĩ nhiều người, <code>print()</code> không chuyển tin nhắn thành văn bản trên màn hình. Chúng được thực hiện bởi các lớp mã cấp thấp hơn, có thể đọc dữ liệu theo byte. Hàm <code>print()</code> là một giao diện trên các lớp này, ủy quyền việc in cho một luồng hoặc đối tượng file. Mặc định, <code>print()</code> được liên kết với sys.stdout thông qua đối số file.</p>
+                <pre class="python-exec" style="max-height: 600px;"><code class="python hljs"><span class="hljs-import">import</span> io
+
+dummy_file = io.<span class="hljs-keyword">StringIO</span>()
+<span class="hljs-keyword">print</span>(<span class="hljs-string">'Hello'</span>, file=dummy_file)
+dummy_file.<span class="hljs-keyword">getvalue</span>()
+</code></pre>
+                <pre class="python-exec" style="max-height: 600px;"><code class="python hljs"><span class="hljs-meta">&gt;&gt;&gt; </span>'Hello!!\n'</code></pre>
+                <p>I/O trong Python thường được buffered, có nghĩa là chúng được sử dụng ở dạng chunks. Đây là lúc flush xuất hiện vì nó giúp người dùng quyết định xem họ có cần lưu nội dung vào bộ đệm hay không. Mặc định nó là False. Nếu được đặt thành True, kết quả đầu ra sẽ được viết dưới dạng một chuỗi nối tiếp nhau. Quá trình này diễn ra chậm, đơn giản vì nó dễ dàng để viết thành nhiều đoạn hơn là viết 1 ký tự tại một thời điểm.</p>
+            </div>
+            <div class="col-md-12">
+                <p>Nguồn:</p>
+                <ul>
+                    <li><a href="https://www.geeksforgeeks.org/python-output-using-print-function/?ref=lbp">Geeksforgeeks</a></li>
+                    <li><a href="https://www.programiz.com/python-programming/input-output-import">Programiz</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!--    END MAIN CONTENT-->
+
+    <input type="hidden" id="url-header" value="../../content.json">
+
+    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="../../js/main.js"></script>
+</body>
+</html>
