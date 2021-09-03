@@ -1,3 +1,44 @@
+pre {
+    padding: 16px;
+    border-radius: 4px;
+    border: 1px solid #d3dce6;
+    background-color: #383b40;
+    margin-bottom: 16px;
+    overflow: auto;
+    font-family: droid sans mono,inconsolata,menlo,consolas,bitstream vera sans mono,courier,monospace;
+    font-size: 14px;
+    line-height: 20px;
+}
+
+code {
+    border: 0;
+    padding: 0;
+    width: 100%;
+    font-size: 14px;
+    line-height: 20px;
+    margin: 0;
+}
+
+.hljs {
+    color: #d3d3d3;
+}
+
+.hljs-bullet, .hljs-link, .hljs-meta, .hljs-selector-id, .hljs-symbol, .hljs-title {
+    color: #61aeee;
+}
+
+.hljs-doctag, .hljs-formula, .hljs-keyword {
+    color: #c678dd;
+}
+
+.hljs-attr, .hljs-number, .hljs-selector-attr, .hljs-selector-class, .hljs-selector-pseudo, .hljs-template-variable, .hljs-type, .hljs-variable {
+    color: #d19a66;
+}
+
+.hljs-addition, .hljs-attribute, .hljs-meta-string, .hljs-regexp, .hljs-string {
+    color: #98c379;
+}
+
 .txt-large {
     font-size: 20px;
 }

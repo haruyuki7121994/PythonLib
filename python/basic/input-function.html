@@ -12,6 +12,52 @@
     <br>
     <!--    END HEADER-->
 
+    <!--    MAIN CONTENT-->
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <p>
+                    Để dev tương tác với người dùng như lấy dữ liệu hoặc cung cấp một số kết quả. Các chương trình ngày nay sử dụng hộp thoại như một cách để yêu cầu người dùng cung cấp một số loại input. Trong Python cung cấp 2 function có sẵn để đọc input từ bàn phím:
+                </p>
+                <ul>
+                    <li class="font-weight-bold"><code>input([prompt])</code></li>
+                    <li class="font-weight-bold"><code>raw_input([prompt])</code></li>
+                </ul>
+                <p>
+                    <code>input()</code>
+                    Hàm này lấy đầu vào từ người dùng. Sau đó đánh giá biểu thức, có nghĩa là Python tự động xác định xem người dùng đã nhập một chuỗi, một số hoặc một danh sách. Nếu input được cung cấp không chính xác, thì Python sẽ đưa ra lỗi <kbd>syntax</kbd> hoặc <kbd>exception</kbd>.
+                </p>
+<pre style="max-height: 600px;"><code class="python hljs"><span class="hljs-meta">&gt;&gt;&gt; </span>num = <span class="hljs-keyword">input</span>(<span class="hljs-string">'Enter a number: '</span>)
+Enter a number: <span class="hljs-number">10</span>
+<span class="hljs-meta">&gt;&gt;&gt; </span>num
+<span class="hljs-string">'10'</span></code></pre>
+
+                <p class="font-weight-bold">Hàm input() hoạt động như thế nào:</p>
+                <ul>
+                    <li>Khi hàm <code>input()</code> thực thi, chương trình sẽ bị <kbd>stop</kbd> cho đến khi người dùng nhập vào một giá trị.</li>
+                    <li><code>[prompt]</code> là một chuỗi hiển thị trên màn hình để yêu cầu người dùng nhập vào giá trị là <kbd>optional</kbd>, tức là lời nhắc được in trên màn hình là optional</li>
+                    <li>Bất cứ giá trị nào nhập vào từ bàn phím, <code>input()</code> sẽ chuyển đổi nó thành <kbd>String</kbd>. Nếu nhập một giá trị số nguyên thì <code>input()</code> vẫn chuyển nó về thành String. Bạn cần chuyển đổi thành một số nguyên trong code sử dụng tính năng <kbd>typecasting</kbd></li>
+                </ul>
+
+                <p><kbd>typecasting</kbd> khi nhập giá trị 10 <code>input()</code> sẽ chuyển số thành chuỗi. Để chuyển đổi nó thành số chúng ta có thể sử dụng hàm <code>int()</code> hoặc <code>float()</code> hoặc <code>eval()</code></p>
+                <pre style="max-height: 600px;"><code class="python hljs"><span class="hljs-meta">&gt;&gt;&gt; </span>int(<span class="hljs-string">'10'</span>)
+<span class="hljs-number">10</span>
+<span class="hljs-meta">&gt;&gt;&gt; </span>float(<span class="hljs-string">'10'</span>)
+<span class="hljs-number">10.0</span></code></pre>
+                <pre style="max-height: 600px;"><code class="python hljs"><span class="hljs-meta">&gt;&gt;&gt; </span>int(<span class="hljs-string">'2+3'</span>)
+Traceback (most recent call last):
+  File <span class="hljs-string">"&lt;string&gt;"</span>, line <span class="hljs-number">301</span>, <span class="hljs-keyword">in</span> runcode
+  File <span class="hljs-string">"&lt;interactive input&gt;"</span>, line <span class="hljs-number">1</span>, <span class="hljs-keyword">in</span> &lt;module&gt;
+ValueError: invalid literal <span class="hljs-keyword">for</span> int() <span class="hljs-keyword">with</span> base <span class="hljs-number">10</span>: <span class="hljs-string">'2+3'</span>
+<span class="hljs-meta">&gt;&gt;&gt; </span>eval(<span class="hljs-string">'2+3'</span>)
+<span class="hljs-number">5</span></code></pre>
+
+                <p><code>raw_input()</code> Hàm này tương tự với hàm <code>input()</code> nhận vào một giá trị từ bàn phím và chuyển thành chuỗi. Được sử dụng ở phiên bản cũ hơn như Python 2.x .</p>
+            </div>
+        </div>
+    </div>
+    <!--    END MAIN CONTENT-->
+
     <input type="hidden" id="url-header" value="../../content.json">
 
     <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
