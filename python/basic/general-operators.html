@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>General Operators</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="../../css/style.css">
+</head>
+<body>
+    <!--    HEADER-->
+    <section id="header-section"></section>
+    <br>
+    <!--    END HEADER-->
+
+    <!--    MAIN CONTENT-->
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <p class="font-weight-bold">Menu</p>
+                <ul>
+                    <li><a href="#arithmetic">Toán tử số học</a></li>
+                    <li><a href="#compare">Toán tử so sánh</a></li>
+                    <li><a href="#logic">Toán tử logic</a></li>
+                    <li><a href="#bitwise">Toán tử bitwise</a></li>
+                    <li><a href="#assignment">Toán tử chỉ dịnh</a></li>
+                    <li><a href="#identity">Toán tử nhận dạng</a></li>
+                    <li><a href="#membership">Toán tử thành viên</a></li>
+                    <li><a href="#priority">Mức độ ưu tiên</a></li>
+                </ul>
+                <h3 id="arithmetic">Toán tử số học</h3>
+                <p>Toán tử số học sử dụng để thực hiện các phép toán như cộng, trừ, nhân, chia...</p>
+                <table class="table">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th scope="col">Toán tử</th>
+                            <th scope="col">Ý nghĩa</th>
+                            <th scope="col">Ví dụ</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>+</td>
+                            <td>Cộng hai toán hạng</td>
+                            <td>15 + 4 = 19</td>
+                        </tr>
+                        <tr>
+                            <td>-</td>
+                            <td>Trừ hai toán hạng</td>
+                            <td>15 - 4 = 11</td>
+                        </tr>
+                        <tr>
+                            <td>*</td>
+                            <td>Nhân hai toán hạng</td>
+                            <td>15 * 4 = 60</td>
+                        </tr>
+                        <tr>
+                            <td>/</td>
+                            <td>Chia hai toán hạng, kết quả là số thực</td>
+                            <td>15 / 4 = 3.75</td>
+                        </tr>
+                        <tr>
+                            <td>%</td>
+                            <td>Chia hai toán hạng lấy phần dư</td>
+                            <td>15 / 4 = 3</td>
+                        </tr>
+                        <tr>
+                            <td>//</td>
+                            <td>Chia hai toán hạng, kết quả là số nguyên làm tròn bên trái</td>
+                            <td>15 // 4 = 3</td>
+                        </tr>
+                        <tr>
+                            <td>**</td>
+                            <td>Lũy thừa 2 toán hạng</td>
+                            <td>15 ** 4 = 50625</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <hr>
+
+                <h3 id="compare">Toán tử so sánh</h3>
+                <p>Toán tử so sánh được sử dụng để so sánh các giá trị. Nó trả về <kbd>True</kbd> hoặc <kbd>False</kbd> tùy theo điều kiện.</p>
+                <table class="table">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th scope="col">Toán tử</th>
+                            <th scope="col">Ý nghĩa</th>
+                            <th scope="col">Ví dụ</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td> > </td>
+                            <td>So sánh lớn hơn</td>
+                            <td>10 > 12 is False</td>
+                        </tr>
+                        <tr>
+                            <td> < </td>
+                            <td>So sánh nhỏ hơn</td>
+                            <td>10 < 12 is True</td>
+                        </tr>
+                        <tr>
+                            <td> == </td>
+                            <td>So sánh bằng</td>
+                            <td>10 == 12 is False</td>
+                        </tr>
+                        <tr>
+                            <td> != </td>
+                            <td>So sánh không bằng</td>
+                            <td>10 != 12 is True</td>
+                        </tr>
+                        <tr>
+                            <td> >= </td>
+                            <td>So sánh lớn hơn hoặc bằng</td>
+                            <td>10 >= 12 is False</td>
+                        </tr>
+                        <tr>
+                            <td> <= </td>
+                            <td>So sánh nhỏ hơn hoặc bằng</td>
+                            <td>10 <= 12 is True</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <hr>
+
+                <h3 id="logic">Toán tử logic</h3>
+                <p>Toán tử logic bao gồm toán tử <kbd>and</kbd> <kbd>or</kbd> <kbd>not</kbd></p>
+                <table class="table">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th scope="col">Toán tử</th>
+                            <th scope="col">Ý nghĩa</th>
+                            <th scope="col">Ví dụ</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td> and </td>
+                            <td>True nếu cả 2 toán hạng là True, False nếu 1 trong 2 toán hạng là False</td>
+                            <td>True and False is False</td>
+                        </tr>
+                        <tr>
+                            <td> or </td>
+                            <td>True nếu 1 trong 2 toán hạng là True, False nếu cả 2 toán hạng là False</td>
+                            <td>True and False is True</td>
+                        </tr>
+                        <tr>
+                            <td> not </td>
+                            <td>True nếu toán hạng là False, False nếu toán hạng là True</td>
+                            <td>not True is False</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <hr>
+
+                <h3 id="bitwise">Toán tử bitwise</h3>
+                <p>Toán tử bitwise hoạt động trên các toán hạng là các chữ số nhị phân. Chúng hoạt động trên từng bit.</p>
+                <table class="table">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th scope="col">Toán tử</th>
+                            <th scope="col">Ý nghĩa</th>
+                            <th scope="col">Ví dụ</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>&</td>
+                            <td>Bitwise AND</td>
+                            <td>10 & 4 = 0 ( <kbd>0000 1010</kbd> & <kbd>0000 0100</kbd> = <kbd>0000 0000</kbd>)</td>
+                        </tr>
+                        <tr>
+                            <td>|</td>
+                            <td>Bitwise OR</td>
+                            <td>10 | 4 = 14 ( <kbd>0000 1010</kbd> | <kbd>0000 0100</kbd> = <kbd>0000 1110</kbd>)</td>
+                        </tr>
+                        <tr>
+                            <td>~</td>
+                            <td>Bitwise NOT</td>
+                            <td>~10 = -11 ( ~<kbd>0000 1010</kbd> = <kbd>1111 0101</kbd>)</td>
+                        </tr>
+                        <tr>
+                            <td>^</td>
+                            <td>Bitwise XOR</td>
+                            <td>10 ^ 4 = 14 ( <kbd>0000 1010</kbd> ^ <kbd>0000 0100</kbd> = <kbd>0000 1110</kbd>)</td>
+                        </tr>
+                        <tr>
+                            <td> >> </td>
+                            <td>Bitwise dịch phải</td>
+                            <td>10 >> 2 = 2 ( <kbd>0000 1010</kbd> >> <kbd>0000 0010</kbd> = <kbd>0000 0010</kbd>)</td>
+                        </tr>
+                        <tr>
+                            <td> << </td>
+                            <td>Bitwise dịch trái</td>
+                            <td>10 << 2 = 40 ( <kbd>0000 1010</kbd> << <kbd>0000 0010</kbd> = <kbd>0010 1000</kbd>)</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <hr>
+
+                <h3 id="assignment">Toán tử chỉ định</h3>
+                <p>Toán tử chỉ định là chỉ định một giá trị cho biến</p>
+                <table class="table">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th scope="col">Toán tử</th>
+                            <th scope="col">Ví dụ</th>
+                            <th scope="col">Tương đương</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td> = </td>
+                            <td>x = 5</td>
+                            <td>x = 5</td>
+                        </tr>
+                        <tr>
+                            <td> += </td>
+                            <td>x += 5</td>
+                            <td>x = x + 5</td>
+                        </tr>
+                        <tr>
+                            <td> -= </td>
+                            <td>x -= 5</td>
+                            <td>x = x - 5</td>
+                        </tr>
+                        <tr>
+                            <td> *= </td>
+                            <td>x *= 5</td>
+                            <td>x = x * 5</td>
+                        </tr>
+                        <tr>
+                            <td> /= </td>
+                            <td>x /= 5</td>
+                            <td>x = x / 5</td>
+                        </tr>
+                        <tr>
+                            <td> %= </td>
+                            <td>x %= 5</td>
+                            <td>x = x % 5</td>
+                        </tr>
+                        <tr>
+                            <td> //= </td>
+                            <td>x //= 5</td>
+                            <td>x = x // 5</td>
+                        </tr>
+                        <tr>
+                            <td> **= </td>
+                            <td>x **= 5</td>
+                            <td>x = x ** 5</td>
+                        </tr>
+                        <tr>
+                            <td> &= </td>
+                            <td>x &= 5</td>
+                            <td>x = x & 5</td>
+                        </tr>
+                        <tr>
+                            <td> |= </td>
+                            <td>x |= 5</td>
+                            <td>x = x | 5</td>
+                        </tr>
+                        <tr>
+                            <td> ^= </td>
+                            <td>x ^= 5</td>
+                            <td>x = x ^ 5</td>
+                        </tr>
+                        <tr>
+                            <td> >>= </td>
+                            <td>x >>= 5</td>
+                            <td>x = x >> 5</td>
+                        </tr>
+                        <tr>
+                            <td> <<= </td>
+                            <td>x <<= 5</td>
+                            <td>x = x << 5</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <hr>
+
+                <h3 id="identity">Toán tử nhận dạng</h3>
+                <p>Toán tử nhận dạng bao gồm <kbd>is</kbd> <kbd>is not</kbd> Chúng được sử dụng để kiểm tra xem 2 giá trị hoặc 2 biến có nằm trên cùng một bộ nhớ hay không. 2 biến số bằng nhau không có nghĩa là chúng giống hệt nhau.</p>
+                <table class="table">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th scope="col">Toán tử</th>
+                            <th scope="col">Ý nghĩa</th>
+                            <th scope="col">Ví dụ</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td> is </td>
+                            <td>True nếu 2 toán hạng giống hệt nhau (tham chiếu đến cùng một đối tượng)</td>
+                            <td>x is True</td>
+                        </tr>
+                        <tr>
+                            <td> is not </td>
+                            <td>True nếu 2 toán hạng không giống nhau (không tham chiếu đến cùng một đối tượng)</td>
+                            <td>x is not True</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <pre class="python-exec" style="max-height: 600px;"><code class="python hljs">x1 = <span class="hljs-number">5</span>
+y1 = <span class="hljs-number">5</span>
+x2 = <span class="hljs-string">'Hello'</span>
+y2 = <span class="hljs-string">'Hello'</span>
+x3 = [<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>]
+y3 = [<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>]
+
+<span class="hljs-comment"># Output: False</span>
+<span class="hljs-keyword">print</span>(x1 <span class="hljs-keyword">is</span> <span class="hljs-keyword">not</span> y1)
+
+<span class="hljs-comment"># Output: True</span>
+<span class="hljs-keyword">print</span>(x2 <span class="hljs-keyword">is</span> y2)
+
+<span class="hljs-comment"># Output: False</span>
+<span class="hljs-keyword">print</span>(x3 <span class="hljs-keyword">is</span> y3)</code></pre>
+                <p><span class="font-weight-bold">Chú ý: </span> Chúng ta thấy <kbd>x1</kbd> và <kbd>y1</kbd> là 2 số nguyên có cùng giá trị cũng như giống hệt nhau. <kbd>x2</kbd> và <kbd>y2</kbd> cũng cùng trường hợp String. Nhưng <kbd>x3</kbd> và <kbd>y3</kbd> là danh sách. Chúng bằng nhau nhưng không giống nhau. Bởi vì trình thông dịch định vị chúng được lưu trữ ở bộ nhớ khác nhau mặc dù chúng bằng nhau.</p>
+                <hr>
+
+                <h3 id="membership">Toán tử thành viên</h3>
+                <p><kbd>in</kbd> <kbd>not in</kbd> là toán tử thành viên trong Python. Được sử dụng để kiểm tra liệu giá trị hoặc biến có được tìm thấy trong một chuỗi hay không (string, list, tuple, set, dictionary). Trong <kbd>Dictionary</kbd> chỉ có thể kiểm tra sự hiện diện của <kbd>key</kbd> chứ không tìm được ở <kbd>value</kbd></p>
+                <table class="table">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th scope="col">Toán tử</th>
+                            <th scope="col">Ý nghĩa</th>
+                            <th scope="col">Ví dụ</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td> in </td>
+                            <td>True nếu giá trị / biến được tìm thấy</td>
+                            <td>5 in x</td>
+                        </tr>
+                        <tr>
+                            <td> not in </td>
+                            <td>True nếu giá trị / biến không được tìm thấy</td>
+                            <td>5 not in x</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <pre class="python-exec" style="max-height: 600px;"><code class="python hljs">x = <span class="hljs-string">'Hello world'</span>
+y = {<span class="hljs-number">1</span>:<span class="hljs-string">'a'</span>,<span class="hljs-number">2</span>:<span class="hljs-string">'b'</span>}
+
+<span class="hljs-comment"># Output: True</span>
+<span class="hljs-keyword">print</span>(<span class="hljs-string">'H'</span> <span class="hljs-keyword">in</span> x)
+
+<span class="hljs-comment"># Output: True</span>
+<span class="hljs-keyword">print</span>(<span class="hljs-string">'hello'</span> <span class="hljs-keyword">not</span> <span class="hljs-keyword">in</span> x)
+
+<span class="hljs-comment"># Output: True</span>
+<span class="hljs-keyword">print</span>(<span class="hljs-number">1</span> <span class="hljs-keyword">in</span> y)
+
+<span class="hljs-comment"># Output: False</span>
+<span class="hljs-keyword">print</span>(<span class="hljs-string">'a'</span> <span class="hljs-keyword">in</span> y)</code></pre>
+                <p><span class="font-weight-bold">Chú ý: </span> <span class="hljs-string">'H'</span> có trong <kbd>x</kbd> nhưng <span class="hljs-string">'hello'</span> không có trong <kbd>x</kbd> (Python có phân biệt chữ hoa và chữ thường). Tương tự, 1 là key và 'a' là value trong <kbd>Dict</kbd> y. Do đó, 'a' trong y trả về <kbd>False</kbd></p>
+                <hr>
+
+                <h3 id="priority">Mức độ ưu tiên và tính liên kết của các toán tử</h3>
+                <p><a href="https://www.programiz.com/python-programming/precedence-associativity">Updating...</a></p>
+            </div>
+            <div class="col-md-12">
+                <p>Nguồn:</p>
+                <ul>
+                    <li><a href="https://www.geeksforgeeks.org/python-operators/?ref=lbp">Geeksforgeeks</a></li>
+                    <li><a href="https://www.programiz.com/python-programming/operators">Programiz</a></li>
+                    <li><a href="https://www.programiz.com/python-programming/precedence-associativity">Precedence and Associativity of Operators in Python</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!--    END MAIN CONTENT-->
+
+    <input type="hidden" id="url-header" value="../../content.json">
+
+    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="../../js/main.js"></script>
+</body>
+</html>
