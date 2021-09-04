@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Input Function</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="../../css/style.css">
+</head>
+<body>
+    <!--    HEADER-->
+    <section id="header-section"></section>
+    <br>
+    <!--    END HEADER-->
+
+    <!--    MAIN CONTENT-->
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <p>Python có các hàm được tạo trước cho nhiều phép toán về toán học, logic, quan hệ, bitwise... nằm trong module <kbd>operator</kbd></p>
+                <table class="table">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th scope="col">Hàm</th>
+                            <th scope="col">Mô tả</th>
+                            <th scope="col">Tương tự</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>add(a, b)</td>
+                            <td>Cộng 2 tham số</td>
+                            <td>a + b</td>
+                        </tr>
+                        <tr>
+                            <td>sub(a, b)</td>
+                            <td>Trừ 2 tham số</td>
+                            <td>a - b</td>
+                        </tr>
+                        <tr>
+                            <td>mul(a, b)</td>
+                            <td>Nhân 2 số</td>
+                            <td>a * b</td>
+                        </tr>
+                        <tr>
+                            <td>truediv(a, b)</td>
+                            <td>Chia 2 số lấy thập phân</td>
+                            <td>a / b</td>
+                        </tr>
+                        <tr>
+                            <td>floordiv(a, b)</td>
+                            <td>Chia 2 số lấy số nguyên nhỏ nhất</td>
+                            <td>a // b</td>
+                        </tr>
+                        <tr>
+                            <td>pow(a, b)</td>
+                            <td>Lũy thừa 2 số</td>
+                            <td>a ** b</td>
+                        </tr>
+                        <tr>
+                            <td>mod(a, b)</td>
+                            <td>Chia 2 số lấy phần dư</td>
+                            <td>a % b</td>
+                        </tr>
+                        <tr>
+                            <td>lt(a, b)</td>
+                            <td>So sánh nhỏ hơn</td>
+                            <td>a < b</td>
+                        </tr>
+                        <tr>
+                            <td>le(a, b)</td>
+                            <td>So sánh nhỏ hơn hoặc bằng</td>
+                            <td>a <= b</td>
+                        </tr>
+                        <tr>
+                            <td>eq(a, b)</td>
+                            <td>So sánh bằng</td>
+                            <td>a == b</td>
+                        </tr>
+                        <tr>
+                            <td>gt(a, b)</td>
+                            <td>So sánh lớn hơn</td>
+                            <td>a > b</td>
+                        </tr>
+                        <tr>
+                            <td>ge(a, b)</td>
+                            <td>So sánh lớn hơn hoặc bằng</td>
+                            <td>a >= b</td>
+                        </tr>
+                        <tr>
+                            <td>ne(a, b)</td>
+                            <td>So sánh không bằng</td>
+                            <td>a != b</td>
+                        </tr>
+                        <tr>
+                            <td>and_(a, b)</td>
+                            <td>So sánh and</td>
+                            <td>a & b</td>
+                        </tr>
+                        <tr>
+                            <td>or_(a, b)</td>
+                            <td>So sánh or</td>
+                            <td>a | b</td>
+                        </tr>
+                        <tr>
+                            <td>xor(a, b)</td>
+                            <td>So sánh xor</td>
+                            <td>a xor b</td>
+                        </tr>
+                        <tr>
+                            <td>invert(a, b)</td>
+                            <td>So sánh inversion</td>
+                            <td>~a</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <hr>
+                <p class="font-weight-bold">Những hàm quan trọng</p>
+                <table class="table">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th scope="col">Hàm</th>
+                            <th scope="col">Mô tả</th>
+                            <th scope="col">Tương tự</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>setitem(ob, pos, val)</td>
+                            <td>Chỉ định giá trị ở một vị trí cụ thể</td>
+                            <td>ob[pos] = val</td>
+                        </tr>
+                        <tr>
+                            <td>delitem(ob, pos)</td>
+                            <td>Xóa giá trị ở một vị trí cụ thể</td>
+                            <td>del ob[pos]</td>
+                        </tr>
+                        <tr>
+                            <td>getitem(ob, pos)</td>
+                            <td>Lấy giá trị ở một vị trí cụ thể</td>
+                            <td>ob[pos]</td>
+                        </tr>
+                        <tr>
+                            <td>setitem(ob, slice(a,b), vals)</td>
+                            <td>Chỉ định nhiều giá trị ở những vị trí cụ thể</td>
+                            <td>ob[a:b] = vals</td>
+                        </tr>
+                        <tr>
+                            <td>delitem(ob, slice(a,b))</td>
+                            <td>Xóa nhiều giá trị ở những vị trí cụ thể</td>
+                            <td>del obj[a:b]</td>
+                        </tr>
+                        <tr>
+                            <td>getitem(ob, slice(a,b))</td>
+                            <td>Lấy nhiều giá trị ở những vị trí cụ thể</td>
+                            <td>ob[a:b]</td>
+                        </tr>
+                        <tr>
+                            <td>concat(ob1, ob2)</td>
+                            <td>Nối hai object</td>
+                            <td>ob1 + ob2</td>
+                        </tr>
+                        <tr>
+                            <td>contains(ob1, ob2)</td>
+                            <td>Kiểm tra ob2 có xuất hiện trong ob1</td>
+                            <td>ob2 in ob1</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <hr>
+            </div>
+            <div class="col-md-12">
+                <p>Nguồn:</p>
+                <ul>
+                    <li><a href="https://www.geeksforgeeks.org/operator-functions-in-python-set-1/?ref=lbp">Geeksforgeeks-par1</a></li>
+                    <li><a href="https://www.geeksforgeeks.org/operator-functions-in-python-set-2/?ref=lbp">Geeksforgeeks-par2</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!--    END MAIN CONTENT-->
+
+    <input type="hidden" id="url-header" value="../../content.json">
+
+    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="../../js/main.js"></script>
+</body>
+</html>
