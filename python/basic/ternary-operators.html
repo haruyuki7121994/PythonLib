@@ -1,10 +1,80 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <meta charset="UTF-8">
+    <title>Ternary Operators</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="../../css/style.css">
 </head>
 <body>
-$END$
+    <!--    HEADER-->
+    <section id="header-section"></section>
+    <br>
+    <!--    END HEADER-->
+
+    <!--    MAIN CONTENT-->
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <p>Toán tử bậc ba còn được gọi là <kbd>Conditional Operators</kbd> là những toán tử đánh giá một cái gì đó dựa trên một điều kiện là <kbd>True</kbd> hoặc <kbd>False</kbd> Nó chỉ cho phép kiểm tra một điều kiện trong một dòng duy nhất thay vì if-else nhiều dòng làm code trở nên gọn hơn.</p>
+                <pre style="max-height: 600px;"><code class="python hljs">Syntax: [on_true]<span class="hljs-keyword"> if </span>[expression] <span class="hljs-keyword">else </span>[on_false]</code></pre>
+                <pre style="max-height: 600px;"><code class="python hljs"><span class="hljs-meta">&gt;&gt;&gt; </span>a, b = <span class="hljs-number">10</span>, <span class="hljs-number">20</span>
+<span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-keyword">print</span>(a <span class="hljs-keyword">if</span> a < b <span class="hljs-keyword">else</span> b)
+<span class="hljs-number">10</span></code></pre>
+
+                <p>Sử dụng <kbd>Tuple</kbd></p>
+                <pre style="max-height: 600px;"><code class="python hljs">Syntax: (on_false, on_true)[condition]</code></pre>
+                <pre style="max-height: 600px;"><code class="python hljs"><span class="hljs-meta">&gt;&gt;&gt; </span>a, b = <span class="hljs-number">10</span>, <span class="hljs-number">20</span>
+<span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-keyword">print</span>((b, a)[a < b])
+<span class="hljs-number">10</span></code></pre>
+
+                <p>Sử dụng <kbd>Dictionary</kbd></p>
+                <pre style="max-height: 600px;"><code class="python hljs">Syntax: {<span class="hljs-keyword">True</span>: on_true, <span class="hljs-keyword">False</span>: on_false}[condition]</code></pre>
+                <pre style="max-height: 600px;"><code class="python hljs"><span class="hljs-meta">&gt;&gt;&gt; </span>a, b = <span class="hljs-number">10</span>, <span class="hljs-number">20</span>
+<span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-keyword">print</span>({<span class="hljs-keyword">True</span>: a, <span class="hljs-keyword">False</span>: b}[a < b])
+<span class="hljs-number">10</span></code></pre>
+
+                <p>Sử dụng <kbd>lambda</kbd> hiệu quả hơn hai phương pháp trên bởi vì lambda đảm bảo rằng chỉ một biểu thức sẽ được đánh giá không giống như <kbd>Tuple</kbd> và <kbd>Dictionary</kbd></p>
+                <pre style="max-height: 600px;"><code class="python hljs">Syntax: (<span class="hljs-keyword">lambda</span>: on_true, <span class="hljs-keyword">lambda</span>: on_false)[condition]()</code></pre>
+                <pre style="max-height: 600px;"><code class="python hljs"><span class="hljs-meta">&gt;&gt;&gt; </span>a, b = <span class="hljs-number">10</span>, <span class="hljs-number">20</span>
+<span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-keyword">print</span>((<span class="hljs-keyword">lambda</span>: b, <span class="hljs-keyword">lambda</span>: a}[a < b]())
+<span class="hljs-number">10</span></code></pre>
+                <hr>
+
+                <p>Sử dụng <kbd>Nested Ternary Operator</kbd></p>
+                <pre style="max-height: 600px;"><code class="python hljs"><span class="hljs-meta">&gt;&gt;&gt; </span>a, b = <span class="hljs-number">10</span>, <span class="hljs-number">20</span>
+<span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-keyword">print</span>(<span class="hljs-string">"Both a and b are equal"</span> <span class="hljs-keyword">if</span> a == b <span class="hljs-keyword">else</span> <span class="hljs-string">"a is greater than b"</span> <span class="hljs-keyword">if</span> a > b <span class="hljs-keyword">else</span> <span class="hljs-string">"b is greater than a"</span>)
+b is greater than a</code></pre>
+                <hr>
+
+                <p class="font-weight-bold">Điểm cần lưu ý</p>
+                <ul>
+                    <li>Biểu thức điều kiện có độ ưu tiên thấp nhất trong những toán tử của Python</li>
+                </ul>
+                <hr>
+
+                <p class="font-weight-bold">Phương thức được sử dụng trước khi toán tử 3 ngôi có mặt</p>
+                <pre style="max-height: 600px;"><code class="python hljs">Syntax: [expression] <span class="hljs-keyword">and</span> [on_true] <span class="hljs-keyword">or</span> [on_false]</code></pre>
+                <pre style="max-height: 600px;"><code class="python hljs"><span class="hljs-meta">&gt;&gt;&gt; </span>a, b = <span class="hljs-number">10</span>, <span class="hljs-number">20</span>
+<span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-keyword">print</span>(a < b <span class="hljs-keyword">and</span> a <span class="hljs-keyword">or</span> b)
+<span class="hljs-number">10</span></code></pre>
+                <p><span class="font-weight-bold">Lưu ý: </span> Hạn chế của phương pháp này là on_true không được bằng <kbd>0</kbd> hoặc <kbd>False</kbd> Nếu điều này xảy ra, on_false sẽ luôn xảy ra. Lý do là nếu biểu thức là True, trình thông dịch sẽ kiểm tra on_true, và nếu on_true là 0 hoặc False sẽ buộc trình thông dịch kiểm tra on_false để đưa ra kết quả cuối cùng của toàn bộ biểu thức.</p>
+            </div>
+            <div class="col-md-12">
+                <p>Nguồn:</p>
+                <ul>
+                    <li><a href="https://www.geeksforgeeks.org/ternary-operator-in-python/?ref=lbp">Geeksforgeeks</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!--    END MAIN CONTENT-->
+
+    <input type="hidden" id="url-header" value="../../content.json">
+
+    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="../../js/main.js"></script>
 </body>
 </html>
