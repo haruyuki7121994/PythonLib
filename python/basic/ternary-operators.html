@@ -35,7 +35,7 @@
 <span class="hljs-number">10</span></code></pre>
 
                 <p>Sử dụng <kbd>lambda</kbd> hiệu quả hơn hai phương pháp trên bởi vì lambda đảm bảo rằng chỉ một biểu thức sẽ được đánh giá không giống như <kbd>Tuple</kbd> và <kbd>Dictionary</kbd></p>
-                <pre style="max-height: 600px;"><code class="python hljs">Syntax: (<span class="hljs-keyword">lambda</span>: on_true, <span class="hljs-keyword">lambda</span>: on_false)[condition]()</code></pre>
+                <pre style="max-height: 600px;"><code class="python hljs">Syntax: (<span class="hljs-keyword">lambda</span>: on_false, <span class="hljs-keyword">lambda</span>: on_true)[condition]()</code></pre>
                 <pre style="max-height: 600px;"><code class="python hljs"><span class="hljs-meta">&gt;&gt;&gt; </span>a, b = <span class="hljs-number">10</span>, <span class="hljs-number">20</span>
 <span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-keyword">print</span>((<span class="hljs-keyword">lambda</span>: b, <span class="hljs-keyword">lambda</span>: a}[a < b]())
 <span class="hljs-number">10</span></code></pre>

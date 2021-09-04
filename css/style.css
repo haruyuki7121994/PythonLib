@@ -43,6 +43,10 @@ code {
     color: red;
 }
 
+.hljs-comment, .hljs-quote {
+    color: #ffddbe;
+}
+
 .txt-large {
     font-size: 20px;
 }

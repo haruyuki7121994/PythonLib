@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Operator Overloading</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="../../css/style.css">
+</head>
+<body>
+    <!--    HEADER-->
+    <section id="header-section"></section>
+    <br>
+    <!--    END HEADER-->
+
+    <!--    MAIN CONTENT-->
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <p>Các toán tử Python hoạt động cho các lớp dựng sẵn (built-in class). Nhưng cùng một toán tử có nhiều cách hoạt động khác nhau. Ví dụ, toán tử <kbd>+</kbd> sẽ thực hiện phép cộng số học trên 2 số, hợp nhất 2 danh sách, nối hai chuỗi. Tính năng này trong Python cho phép cùng 1 toán tử có thể sử dụng khác nhau tùy theo ngữ cảnh gọi là <kbd>Operator Overloading</kbd></p>
+                <pre style="max-height: 600px;"><code class="python hljs"><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-keyword">print</span>(1+2)
+<span class="hljs-number">3</span>
+
+<span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-keyword">print</span>(<span class="hljs-string">"Good "</span>+<span class="hljs-string">"morning!"</span>)
+Good morning!
+
+<span class="hljs-meta">&gt;&gt;&gt; </span>a = [<span class="hljs-number">1,2</span>]
+<span class="hljs-meta">&gt;&gt;&gt; </span>b = [<span class="hljs-number">3,4</span>]
+<span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-keyword">print</span>(a+b)
+[<span class="hljs-number">1, 2, 3, 4</span>]
+
+<span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-keyword">print</span>(<span class="hljs-string">"Good morning!"</span>*4)
+Good morning!Good morning!Good morning!Good morning!</code></pre>
+                <hr>
+
+                <p><kbd>Special Functions</kbd> hoặc <kbd>Magic Functions</kbd> là các hàm bắt đầu bằng <kbd>__</kbd> và kết thúc bằng <kbd>__</kbd> Các hàm này không phải là các hàm bình thường mà chúng ta định nghĩa cho một lớp. Hàm <kbd>__init__</kbd> là một hàm đặc biệt. Nó được gọi mỗi khi tạo một đối tượng mới của lớp đó. Sử dụng các hàm đặc biệt, chúng ta có thể làm cho lớp tương thích với các hàm built-in có sẵn.</p>
+                <pre style="max-height: 600px;"><code class="python hljs"><span class="hljs-meta">&gt;&gt;&gt; </span>p1 = Point(<span class="hljs-number">2</span>,<span class="hljs-number">3</span>)
+<span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-keyword">print</span>(p1)
+&lt;__main__.Point object at <span class="hljs-number">0x00000000031F8CC0</span>&gt;</code></pre>
+                <p>Giả sử chúng ta muốn <kbd>print()</kbd> in ra tọa độ của đối tượng Point thay vì những gì chúng ta nhận được. Chúng ta có thể định nghĩa một phương thức <kbd>__str__</kbd> trong lớp để điều khiển cách đối tượng được in ra.</p>
+                <pre class="python-exec" style="max-height: 600px;"><code class="python hljs"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Point</span>:</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span><span class="hljs-params">(self, x=<span class="hljs-number">0</span>, y=<span class="hljs-number">0</span>)</span>:</span>
+        self.x = x
+        self.y = y
+
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__str__</span><span class="hljs-params">(self)</span>:</span>
+        <span class="hljs-keyword">return</span> <span class="hljs-string">"({0}, {1})"</span>.format(self.x, self.y)
+
+
+p1 = Point(<span class="hljs-number">2</span>, <span class="hljs-number">3</span>)
+<span class="hljs-keyword">print</span>(p1)
+<span class="hljs-meta">&gt;&gt;&gt; </span>(2, 3)</code></pre>
+                <hr>
+
+                <p><kbd>Overloading Operator</kbd> Để nạp chồng toán tử <kbd>+</kbd>, chúng ta sẽ cần triển khai hàm <kbd>__add__</kbd> trong lớp.</p>
+                <pre class="python-exec" style="max-height: 600px;"><code class="python hljs"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Point</span>:</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span><span class="hljs-params">(self, x=<span class="hljs-number">0</span>, y=<span class="hljs-number">0</span>)</span>:</span>
+        self.x = x
+        self.y = y
+
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__str__</span><span class="hljs-params">(self)</span>:</span>
+        <span class="hljs-keyword">return</span> <span class="hljs-string">"({0},{1})"</span>.format(self.x, self.y)
+
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__add__</span><span class="hljs-params">(self, other)</span>:</span>
+        x = self.x + other.x
+        y = self.y + other.y
+        <span class="hljs-keyword">return</span> Point(x, y)
+
+
+p1 = Point(<span class="hljs-number">1</span>, <span class="hljs-number">2</span>)
+p2 = Point(<span class="hljs-number">2</span>, <span class="hljs-number">3</span>)
+
+<span class="hljs-keyword">print</span>(p1+p2)
+<span class="hljs-meta">&gt;&gt;&gt; </span>(3, 5)</code></pre>
+                <p>Khi <kbd>p1</kbd> + <kbd>p2</kbd>, Python gọi <kbd>p1.__add__(p1, p2)</kbd> và nhận được kết quả như trên.</p>
+                <p>Tương tự, chúng ta cũng có thể overload các toán tử khác. <kbd>Special Function</kbd> mà chúng ta cần implement được liệt kê theo bảng dưới đây:</p>
+                <table class="table">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th scope="col">Toán tử</th>
+                            <th scope="col">Thể hiện</th>
+                            <th scope="col">Nội suy</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>+</td>
+                            <td>p1 + p2</td>
+                            <td>p1.__add__(p2)</td>
+                        </tr>
+                        <tr>
+                            <td>-</td>
+                            <td>p1 - p2</td>
+                            <td>p1.__sub__(p2)</td>
+                        </tr>
+                        <tr>
+                            <td>*</td>
+                            <td>p1 * p2</td>
+                            <td>p1.__mul__(p2)</td>
+                        </tr>
+                        <tr>
+                            <td>**</td>
+                            <td>p1 ** p2</td>
+                            <td>p1.__pow__(p2)</td>
+                        </tr>
+                        <tr>
+                            <td>/</td>
+                            <td>p1 / p2</td>
+                            <td>p1.__truediv__(p2)</td>
+                        </tr>
+                        <tr>
+                            <td>//</td>
+                            <td>p1 // p2</td>
+                            <td>p1.__floordiv__(p2)</td>
+                        </tr>
+                        <tr>
+                            <td>%</td>
+                            <td>p1 % p2</td>
+                            <td>p1.__mod__(p2)</td>
+                        </tr>
+                        <tr>
+                            <td> << </td>
+                            <td>p1 << p2</td>
+                            <td>p1.__lshift__(p2)</td>
+                        </tr>
+                        <tr>
+                            <td> >> </td>
+                            <td>p1 >> p2</td>
+                            <td>p1.__rshift__(p2)</td>
+                        </tr>
+                        <tr>
+                            <td>&</td>
+                            <td>p1 & p2</td>
+                            <td>p1.__and__(p2)</td>
+                        </tr>
+                        <tr>
+                            <td>|</td>
+                            <td>p1 | p2</td>
+                            <td>p1.__or__(p2)</td>
+                        </tr>
+                        <tr>
+                            <td>^</td>
+                            <td>p1 ^ p2</td>
+                            <td>p1.__xor__(p2)</td>
+                        </tr>
+                        <tr>
+                            <td>~</td>
+                            <td>~p1</td>
+                            <td>p1.__invert__()</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <hr>
+
+                <p>Python không giới hạn việc nạp chồng toán tử chỉ với toán tử số học. <kbd>Comparison Operators</kbd> cũng được implement theo bảng sau:</p>
+                <table class="table">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th scope="col">Toán tử</th>
+                            <th scope="col">Thể hiện</th>
+                            <th scope="col">Nội suy</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td> < </td>
+                            <td>p1 < p2</td>
+                            <td>p1.__lt__(p2)</td>
+                        </tr>
+                        <tr>
+                            <td> <= </td>
+                            <td>p1 <= p2</td>
+                            <td>p1.__le__(p2)</td>
+                        </tr>
+                        <tr>
+                            <td> == </td>
+                            <td>p1 == p2</td>
+                            <td>p1.__eq__(p2)</td>
+                        </tr>
+                        <tr>
+                            <td>!=</td>
+                            <td>p1 != p2</td>
+                            <td>p1.__ne__(p2)</td>
+                        </tr>
+                        <tr>
+                            <td> > </td>
+                            <td>p1 > p2</td>
+                            <td>p1.__gt__(p2)</td>
+                        </tr>
+                        <tr>
+                            <td> >= </td>
+                            <td>p1 >= p2</td>
+                            <td>p1.__ge__(p2)</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <hr>
+
+                <p><kbd>Assignment Operators</kbd> được implement theo bảng dưới đây:</p>
+                <table class="table">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th scope="col">Toán tử</th>
+                            <th scope="col">Thể hiện</th>
+                            <th scope="col">Nội suy</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td> -= </td>
+                            <td>p1 -= p2</td>
+                            <td>p1.__isub__(p2)</td>
+                        </tr>
+                        <tr>
+                            <td> += </td>
+                            <td>p1 += p2</td>
+                            <td>p1.__iadd__(p2)</td>
+                        </tr>
+                        <tr>
+                            <td> *= </td>
+                            <td>p1 *= p2</td>
+                            <td>p1.__imul__(p2)</td>
+                        </tr>
+                        <tr>
+                            <td>/=</td>
+                            <td>p1 /= p2</td>
+                            <td>p1.__idiv__(p2)</td>
+                        </tr>
+                        <tr>
+                            <td> //= </td>
+                            <td>p1 //= p2</td>
+                            <td>p1.__ifloordiv__(p2)</td>
+                        </tr>
+                        <tr>
+                            <td> %= </td>
+                            <td>p1 %= p2</td>
+                            <td>p1.__imod__(p2)</td>
+                        </tr>
+                        <tr>
+                            <td> **= </td>
+                            <td>p1 >= p2</td>
+                            <td>p1.__ge__(p2)</td>
+                        </tr>
+                        <tr>
+                            <td> >>= </td>
+                            <td>p1 >>= p2</td>
+                            <td>p1.__irshift__(p2)</td>
+                        </tr>
+                        <tr>
+                            <td> <<= </td>
+                            <td>p1 <<= p2</td>
+                            <td>p1.__ilshift__(p2)</td>
+                        </tr>
+                        <tr>
+                            <td> &= </td>
+                            <td>p1 &= p2</td>
+                            <td>p1.__iand__(p2)</td>
+                        </tr>
+                        <tr>
+                            <td> |= </td>
+                            <td>p1 |= p2</td>
+                            <td>p1.__ior__(p2)</td>
+                        </tr>
+                        <tr>
+                            <td> ^= </td>
+                            <td>p1 >= p2</td>
+                            <td>p1.__ixor__(p2)</td>
+                        </tr>
+
+                    </tbody>
+                </table>
+                <hr>
+            </div>
+            <div class="col-md-12">
+                <p>Nguồn:</p>
+                <ul>
+                    <li><a href="https://www.geeksforgeeks.org/operator-overloading-in-python/?ref=lbp">Geeksforgeeks</a></li>
+                    <li><a href="https://www.programiz.com/python-programming/operator-overloading">Programiz</a></li>
+                    <li><a href="https://docs.python.org/3/reference/datamodel.html#special-method-names">Python Special Function</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!--    END MAIN CONTENT-->
+
+    <input type="hidden" id="url-header" value="../../content.json">
+
+    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="../../js/main.js"></script>
+</body>
+</html>
