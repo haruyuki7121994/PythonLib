@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Any All Function</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="../../css/style.css">
+</head>
+<body>
+    <!--    HEADER-->
+    <section id="header-section"></section>
+    <br>
+    <!--    END HEADER-->
+
+    <!--    MAIN CONTENT-->
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <p class="font-weight-bold">Menu</p>
+                <ul>
+                    <li><a href="#any">Hàm <code>any()</code></a></li>
+                    <li><a href="#all">Hàm <code>all()</code></a></li>
+                </ul>
+                <p id="any">Hàm <kbd>any()</kbd> trả về <kbd>True</kbd> nếu bất kỳ phần tử nào của giá trị là True. Ngược lại, trả về <kbd>False</kbd></p>
+                <pre><code class="python hljs"><span class="hljs-keyword">any</span>(iterable)
+<span class="font-weight-bold">Parameters:</span>
+    <span class="font-weight-bold">iterable: </span>có thể là list, string, dictionary...
+<span class="font-weight-bold">Return Value:</span>
+    <span class="font-weight-bold">True: </span>ít nhất một phần tử là True
+    <span class="font-weight-bold">False: </span>tất cả phần tử là False hoặc empty</code></pre>
+                <p>Sử dụng <kbd>any()</kbd> cho <kbd>List</kbd> <kbd>Set</kbd> <kbd>Tuple</kbd></p>
+                <pre class="python-exec" style="max-height: 600px;"><code class="python hljs"><span class="hljs-comment"># True since 1,3 and 4 (at least one) is true</span>
+l = [<span class="hljs-number">1</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">0</span>]
+<span class="line-highlight"><span class="hljs-keyword">print</span>(any(l))</span>
+<span class="hljs-meta">&gt;&gt;&gt; </span>True
+
+<span class="hljs-comment"># False since both are False</span>
+l = [<span class="hljs-number">0</span>, <span class="hljs-literal">False</span>]
+<span class="line-highlight"><span class="hljs-keyword">print</span>(any(l))</span>
+<span class="hljs-meta">&gt;&gt;&gt; </span>False
+
+<span class="hljs-comment"># True since 5 is true</span>
+l = [<span class="hljs-number">0</span>, <span class="hljs-literal">False</span>, <span class="hljs-number">5</span>]
+<span class="line-highlight"><span class="hljs-keyword">print</span>(any(l))</span>
+<span class="hljs-meta">&gt;&gt;&gt; </span>True
+
+<span class="hljs-comment"># False since iterable is empty</span>
+l = []
+<span class="line-highlight"><span class="hljs-keyword">print</span>(any(l))</span>
+<span class="hljs-meta">&gt;&gt;&gt; </span>False</code></pre>
+
+                <p>Sử dụng <kbd>any()</kbd> cho <kbd>String</kbd></p>
+                <pre class="python-exec" style="max-height: 600px;"><code class="python hljs"><span class="hljs-comment"># At east one (in fact all) elements are True</span>
+s = <span class="hljs-string">"This is good"</span>
+<span class="line-highlight"><span class="hljs-keyword">print</span>(any(s))</span>
+<span class="hljs-meta">&gt;&gt;&gt; </span>True
+
+<span class="hljs-comment"># 0 is False</span>
+<span class="hljs-comment"># '0' is True since its a string character</span>
+s = <span class="hljs-string">'000'</span>
+<span class="hljs-keyword">print</span>(any(s))
+<span class="hljs-meta">&gt;&gt;&gt; </span>True
+
+<span class="hljs-comment"># False since empty iterable</span>
+s = <span class="hljs-string">''</span>
+<span class="line-highlight"><span class="hljs-keyword">print</span>(any(s))</span>
+<span class="hljs-meta">&gt;&gt;&gt; </span>False</code></pre>
+
+                <p>Sử dụng <kbd>any()</kbd> cho <kbd>Dictionary</kbd></p>
+                <pre class="python-exec" style="max-height: 600px;"><code class="python hljs"><span class="hljs-comment"># 0 is False</span>
+d = {<span class="hljs-number">0</span>: <span class="hljs-string">'False'</span>}
+<span class="hljs-keyword">print</span>(any(d))
+<span class="hljs-meta">&gt;&gt;&gt; </span>False
+
+<span class="hljs-comment"># 1 is True</span>
+d = {<span class="hljs-number">0</span>: <span class="hljs-string">'False'</span>, <span class="hljs-number">1</span>: <span class="hljs-string">'True'</span>}
+<span class="line-highlight"><span class="hljs-keyword">print</span>(any(d))</span>
+<span class="hljs-meta">&gt;&gt;&gt; </span>True
+
+<span class="hljs-comment"># 0 and False are false</span>
+d = {<span class="hljs-number">0</span>: <span class="hljs-string">'False'</span>, <span class="hljs-literal">False</span>: <span class="hljs-number">0</span>}
+<span class="hljs-keyword">print</span>(any(d))
+<span class="hljs-meta">&gt;&gt;&gt; </span>False
+
+<span class="hljs-comment"># iterable is empty</span>
+d = {}
+<span class="line-highlight"><span class="hljs-keyword">print</span>(any(d))</span>
+<span class="hljs-meta">&gt;&gt;&gt; </span>False
+
+<span class="hljs-comment"># 0 is False</span>
+<span class="hljs-comment"># '0' is True</span>
+d = {<span class="hljs-string">'0'</span>: <span class="hljs-string">'False'</span>}
+<span class="hljs-keyword">print</span>(any(d))
+<span class="hljs-meta">&gt;&gt;&gt; </span>True</code></pre>
+                <hr>
+
+                <p id="all">Hàm <kbd>all()</kbd> trả về <kbd>True</kbd> nếu tất cả phần tử nào của giá trị là True hoặc empty. Ngược lại, trả về <kbd>False</kbd></p>
+                <pre><code class="python hljs"><span class="hljs-keyword">all</span>(iterable)
+<span class="font-weight-bold">Parameters:</span>
+    <span class="font-weight-bold">iterable: </span>có thể là list, string, dictionary...
+<span class="font-weight-bold">Return Value:</span>
+    <span class="font-weight-bold">True: </span>tất cả phần tử là True hoặc empty
+    <span class="font-weight-bold">False: </span>ít nhất một phần tử là False</code></pre>
+                <p>Sử dụng <kbd>all()</kbd> cho <kbd>List</kbd> <kbd>Set</kbd> <kbd>Tuple</kbd></p>
+                <pre class="python-exec" style="max-height: 600px;"><code class="python hljs"><span class="hljs-comment"># all values true</span>
+l = [<span class="hljs-number">1</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">5</span>]
+<span class="line-highlight"><span class="hljs-keyword">print</span>(all(l))</span>
+<span class="hljs-meta">&gt;&gt;&gt; </span>True
+
+<span class="hljs-comment"># all values false</span>
+l = [<span class="hljs-number">0</span>, <span class="hljs-literal">False</span>]
+<span class="hljs-keyword">print</span>(all(l))
+<span class="hljs-meta">&gt;&gt;&gt; </span>False
+
+<span class="hljs-comment"># one false value</span>
+l = [<span class="hljs-number">1</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">0</span>]
+<span class="line-highlight"><span class="hljs-keyword">print</span>(all(l))</span>
+<span class="hljs-meta">&gt;&gt;&gt; </span>False
+
+<span class="hljs-comment"># one true value</span>
+l = [<span class="hljs-number">0</span>, <span class="hljs-literal">False</span>, <span class="hljs-number">5</span>]
+<span class="hljs-keyword">print</span>(all(l))
+<span class="hljs-meta">&gt;&gt;&gt; </span>False
+
+<span class="hljs-comment"># empty iterable</span>
+l = []
+<span class="line-highlight"><span class="hljs-keyword">print</span>(all(l))</span>
+<span class="hljs-meta">&gt;&gt;&gt; </span>True</code></pre>
+
+                <p>Sử dụng <kbd>all()</kbd> cho <kbd>String</kbd></p>
+                <pre class="python-exec" style="max-height: 600px;"><code class="python hljs">s = <span class="hljs-string">"This is good"</span>
+<span class="line-highlight"><span class="hljs-keyword">print</span>(all(s))</span>
+<span class="hljs-meta">&gt;&gt;&gt; </span>True
+
+<span class="hljs-comment"># 0 is False</span>
+<span class="hljs-comment"># '0' is True</span>
+s = <span class="hljs-string">'000'</span>
+<span class="hljs-keyword">print</span>(all(s))
+<span class="hljs-meta">&gt;&gt;&gt; </span>True
+
+s = <span class="hljs-string">''</span>
+<span class="line-highlight"><span class="hljs-keyword">print</span>(all(s))</span>
+<span class="hljs-meta">&gt;&gt;&gt; </span>True</code></pre>
+
+                <p>Sử dụng <kbd>all()</kbd> cho <kbd>Dictionary</kbd></p>
+                <pre class="python-exec" style="max-height: 600px;"><code class="python hljs">s = {<span class="hljs-number">0</span>: <span class="hljs-string">'False'</span>, <span class="hljs-number">1</span>: <span class="hljs-string">'False'</span>}
+<span class="line-highlight"><span class="hljs-keyword">print</span>(all(s))</span>
+<span class="hljs-meta">&gt;&gt;&gt; </span>False
+
+s = {<span class="hljs-number">1</span>: <span class="hljs-string">'True'</span>, <span class="hljs-number">2</span>: <span class="hljs-string">'True'</span>}
+<span class="hljs-keyword">print</span>(all(s))
+<span class="hljs-meta">&gt;&gt;&gt; </span>True
+
+s = {<span class="hljs-number">1</span>: <span class="hljs-string">'True'</span>, <span class="hljs-literal">False</span>: <span class="hljs-number">0</span>}
+<span class="line-highlight"><span class="hljs-keyword">print</span>(all(s))</span>
+<span class="hljs-meta">&gt;&gt;&gt; </span>False
+
+s = {}
+<span class="hljs-keyword">print</span>(all(s))
+<span class="hljs-meta">&gt;&gt;&gt; </span>True
+
+<span class="hljs-comment"># 0 is False</span>
+<span class="hljs-comment"># '0' is True</span>
+<span class="line-highlight">s = {<span class="hljs-string">'0'</span>: <span class="hljs-string">'True'</span>}</span>
+<span class="hljs-keyword">print</span>(all(s))
+<span class="hljs-meta">&gt;&gt;&gt; </span>True</code></pre>
+            </div>
+            <div class="col-md-12">
+                <p>Nguồn:</p>
+                <ul>
+                    <li><a href="https://www.geeksforgeeks.org/any-all-in-python/?ref=lbp">Geeksforgeeks</a></li>
+                    <li><a href="https://www.programiz.com/python-programming/methods/built-in/all">Programiz-all()</a></li>
+                    <li><a href="https://www.programiz.com/python-programming/methods/built-in/any">Programiz-any()</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!--    END MAIN CONTENT-->
+
+    <input type="hidden" id="url-header" value="../../content.json">
+
+    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="../../js/main.js"></script>
+</body>
+</html>
