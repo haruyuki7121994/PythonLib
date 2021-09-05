@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Number</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="../../../css/style.css">
+</head>
+<body>
+    <!--    HEADER-->
+    <section id="header-section"></section>
+    <br>
+    <!--    END HEADER-->
+
+    <!--    MAIN CONTENT-->
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <section id="menu">
+                    <p class="font-weight-bold">Menu</p>
+                    <ul>
+                        <li><a href="#introduction">Giới thiệu</a></li>
+                        <li><a href="#create">Tạo chuỗi</a></li>
+                        <li><a href="#change-delete">Sửa-Xóa chuỗi</a></li>
+                        <li><a href="#escape-sequence">Escape sequence</a></li>
+                        <li><a href="#raw-string">Chuỗi thô</a></li>
+                        <li><a href="#format">Chuyển đổi chuỗi</a></li>
+                        <li><a href="#method">Phương thức chuỗi</a></li>
+                    </ul>
+                </section>
+                <hr>
+                <section id="main">
+                    <div id="introduction">
+                        <p class="alert alert-info">Introduction</p>
+                        <p>Trong Python, <kbd>String</kbd> là các <kbd>array[...byte]</kbd> đại diện cho các ký tự <kbd>Unicode</kbd> Có thể dùng dấu ngoặc vuông để truy cập các phần tử trong chuỗi.</p>
+                        <p>Python không có kiểu dữ liệu ký tự, một ký tự đơn giản chỉ là một chuỗi có độ dài bằng 1. Máy tính không xử lý các ký tự, chúng xử lý số nhị phân. Mặc dù có thể thấy các ký tự trên màn hình. Nhưng nó được lưu trữ và thao tác dưới dạng kết hợp số <kbd>0</kbd> và <kbd>1</kbd> Quá trình chuyển đổi ký tự thành số này được gọi là mã hóa, và ngược lại gọi là giải mã. ASCII và Unicode là một số bảng mã phổ biến. Một chuỗi trong Python là một mảng byte các ký tự Unicode.</p>
+                    </div>
+                    <hr>
+                    <div id="create">
+                        <p class="alert alert-info">Create String</p>
+                        <p><kbd>String</kbd> trong Python có thể được tạo bằng cách sử dụng một dấu nháy kép, 2 dấu nháy kép hoặc 3 dấu nháy kép.</p>
+                        <pre class="python-exec" style="max-height: 600px;"><code class="python hljs"><span class="hljs-comment"># defining strings in Python</span>
+<span class="hljs-comment"># all of the following are equivalent</span>
+my_string = <span class="hljs-string">'Hello'</span>
+<span class="hljs-keyword">print</span>(my_string)
+<span class="hljs-meta">&gt;&gt;&gt; </span>Hello
+
+my_string = <span class="hljs-string">"Hello"</span>
+<span class="hljs-keyword">print</span>(my_string)
+<span class="hljs-meta">&gt;&gt;&gt; </span>Hello
+
+my_string = <span class="hljs-string">'''Hello'''</span>
+<span class="hljs-keyword">print</span>(my_string)
+<span class="hljs-meta">&gt;&gt;&gt; </span>Hello
+
+<span class="hljs-comment"># triple quotes string can extend multiple lines</span>
+my_string = <span class="hljs-string">"""Hello, welcome to
+           the world of Python"""</span>
+<span class="hljs-keyword">print</span>(my_string)
+<span class="hljs-meta">&gt;&gt;&gt; </span>Hello, welcome to
+           the world of Python</code></pre>
+                    </div>
+                    <hr>
+                    <div id="access">
+                        <p class="alert alert-info">Access Characters</p>
+                        <p>Chúng ta có thể truy cập các ký tự riêng lẻ bằng cách sử dụng <kbd>index</kbd> hoặc một loạt các ký tự bằng cách sử dụng phương pháp cắt.</p>
+                        <p class="font-weight-bold">Những điểm lưu ý về index:</p>
+                        <ul>
+                            <li>Index bắt đầu bằng <kbd>0</kbd></li>
+                            <li>Truy cập một ký tự nằm ngoài phạm vi index sẽ gây ra lỗi <kbd>IndexError</kbd></li>
+                            <li>Index là một số <kbd>integer</kbd> có thể dương hoặc âm. Không thể sử dụng float hoặc các loại khác, điều này sẽ dẫn đến <kbd>TypeError</kbd></li>
+                            <li>Truy cập một loạt index bằng cách sử dụng toán tử cắt <kbd>:</kbd></li>
+                        </ul>
+                        <pre class="python-exec" style="max-height: 600px;"><code class="python hljs"><span class="hljs-comment">#Accessing string characters in Python</span>
+str = <span class="hljs-string">'programiz'</span>
+<span class="hljs-keyword">print</span>(<span class="hljs-string">'str = '</span>, str)
+<span class="hljs-meta">&gt;&gt;&gt; </span>str =  programiz
+
+<span class="hljs-comment">#first character</span>
+<span class="hljs-keyword">print</span>(<span class="hljs-string">'str[0] = '</span>, str[<span class="hljs-number">0</span>])
+<span class="hljs-meta">&gt;&gt;&gt; </span>str[0] =  p
+
+<span class="hljs-comment">#last character</span>
+<span class="hljs-keyword">print</span>(<span class="hljs-string">'str[-1] = '</span>, str[<span class="hljs-number">-1</span>])
+<span class="hljs-meta">&gt;&gt;&gt; </span>str[-1] =  z
+
+<span class="hljs-comment">#slicing 2nd to 5th character</span>
+<span class="hljs-keyword">print</span>(<span class="hljs-string">'str[1:5] = '</span>, str[<span class="hljs-number">1</span>:<span class="hljs-number">5</span>])
+<span class="hljs-meta">&gt;&gt;&gt; </span>str[1:5] =  rogr
+
+<span class="hljs-comment">#slicing 6th to 2nd last character</span>
+<span class="hljs-keyword">print</span>(<span class="hljs-string">'str[5:-2] = '</span>, str[<span class="hljs-number">5</span>:<span class="hljs-number">-2</span>])
+<span class="hljs-meta">&gt;&gt;&gt; </span>str[5:-2] =  am</code></pre>
+                        <pre style="max-height: 600px;"><code class="python hljs"><span class="hljs-comment"># index must be in range</span>
+<span class="hljs-meta">&gt;&gt;&gt; </span>my_string[<span class="hljs-number">15</span>]
+...
+IndexError: string index out of range
+
+<span class="hljs-comment"># index must be an integer</span>
+<span class="hljs-meta">&gt;&gt;&gt; </span>my_string[<span class="hljs-number">1.5</span>]
+...
+TypeError: string indices must be integers</code></pre>
+                        <img style="width: 100%; border: 1px solid #d3dce6;border-radius: 4px;" src="https://cdn.programiz.com/sites/tutorial2program/files/element-slicling.jpg" alt="">
+                    </div>
+                    <hr>
+                    <div id="change-delete">
+                        <p class="alert alert-info">Change - Delete String</p>
+                        <p><kbd>String</kbd> là bất biến. Có nghĩa rằng không thể thay đổi hoặc xóa một phần tử trong chuỗi ngay khi mà nó được gán giá trị. Chúng ta chỉ có thể gán giá trị khác hoặc xóa toàn bộ chuỗi.</p>
+                        <pre style="max-height: 600px;"><code class="python hljs"><span class="hljs-meta">&gt;&gt;&gt; </span>my_string = <span class="hljs-string">'programiz'</span>
+<span class="hljs-meta">&gt;&gt;&gt; </span>my_string[<span class="hljs-number">5</span>] = <span class="hljs-string">'a'</span>
+...
+TypeError: <span class="hljs-string">'str'</span> object does <span class="hljs-keyword">not</span> support item assignment
+<span class="hljs-meta">&gt;&gt;&gt; </span>my_string = <span class="hljs-string">'Python'</span>
+<span class="hljs-meta">&gt;&gt;&gt; </span>my_string
+<span class="hljs-string">'Python'</span></code></pre>
+                        <p>Sử dụng từ khóa <kbd>del</kbd> để xóa toàn bộ chuỗi.</p>
+                        <pre style="max-height: 600px;"><code class="python hljs"><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-keyword">del</span> my_string[<span class="hljs-number">1</span>]
+...
+TypeError: <span class="hljs-string">'str'</span> object doesn't support item deletion
+<span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-keyword">del</span> my_string
+<span class="hljs-meta">&gt;&gt;&gt; </span>my_string
+...
+NameError: name 'my_string<span class="hljs-string">' is not defined</span></code></pre>
+                    </div>
+                    <hr>
+                    <div id="escape-sequence">
+                        <p class="alert alert-info">Escape Sequence</p>
+                        <p>Nếu chúng ta muốn in một văn bản như sau <kbd>He said, "What's there?"</kbd> Chúng ta không thể sử dụng dấu nháy kép đơn và dấu nháy kép đôi. Điều này sẽ dẫn đến <kbd>SyntaxError</kbd> vì văn bản chứa cả dấu nháy đơn và dấu nháy kép.</p>
+                        <pre style="max-height: 600px;"><code class="python hljs"><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-keyword">print</span>(<span class="hljs-string">"He said, "</span>What<span class="hljs-string">'s there?"")</span>
+...
+SyntaxError: invalid syntax
+<span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-keyword">print</span>('He said, <span class="hljs-string">"What's there?"</span><span class="hljs-string">')</span>
+...
+SyntaxError: invalid syntax</code></pre>
+                        <p>Giải quyết vấn đề này là sử dụng nháy kép 3 hoặc sử dụng <kbd>escape sequence</kbd></p>
+                        <p><kbd>escape sequence</kbd> bắt đầu bằng dấu <kbd>\</kbd> và nội dung sau đó sẽ được hiểu theo cách khác. Ví dụ: Nếu chúng ta sử dụng dấu kép đơn để đại diện cho một chuỗi, thì một dấu nháy đơn trong chuỗi phải sử dụng ký tự \ đằng trước.</p>
+                        <pre class="python-exec" style="max-height: 600px;"><code class="python hljs"><span class="hljs-comment"># using triple quotes</span>
+<span class="hljs-keyword">print</span>(<span class="hljs-string">'''He said, "What's there?"'''</span>)
+<span class="hljs-meta">&gt;&gt;&gt; </span>What's there
+
+<span class="hljs-comment"># escaping single quotes</span>
+<span class="hljs-keyword">print</span>(<span class="hljs-string">'He said, "What\'s there?"'</span>)
+<span class="hljs-meta">&gt;&gt;&gt; </span>What's there
+
+<span class="hljs-comment"># escaping double quotes</span>
+<span class="hljs-keyword">print</span>(<span class="hljs-string">"He said, \"What's there?\""</span>)
+<span class="hljs-meta">&gt;&gt;&gt; </span>What's there</code></pre>
+                        <p>Dưới đây là danh sách <kbd>escape sequence</kbd> hỗ trợ trong Python.</p>
+                        <table class="table">
+                            <tbody class="thead-dark">
+                                <tr>
+                                    <th>Escape Sequence</th>
+                                    <th>Description</th>
+                                </tr>
+                                <tr>
+                                    <td>\newline</td>
+                                    <td>Backslash and newline ignored</td>
+                                </tr>
+                                <tr>
+                                    <td>\\</td>
+                                    <td>Backslash</td>
+                                </tr>
+                                <tr>
+                                    <td>\'</td>
+                                    <td>Single quote</td>
+                                </tr>
+                                <tr>
+                                    <td>\"</td>
+                                    <td>Double quote</td>
+                                </tr>
+                                <tr>
+                                    <td>\a</td>
+                                    <td>ASCII Bell</td>
+                                </tr>
+                                <tr>
+                                    <td>\b</td>
+                                    <td>ASCII Backspace</td>
+                                </tr>
+                                <tr>
+                                    <td>\f</td>
+                                    <td>ASCII Formfeed</td>
+                                </tr>
+                                <tr>
+                                    <td>\n</td>
+                                    <td>ASCII Linefeed</td>
+                                </tr>
+                                <tr>
+                                    <td>\r</td>
+                                    <td>ASCII Carriage Return</td>
+                                </tr>
+                                <tr>
+                                    <td>\t</td>
+                                    <td>ASCII Horizontal Tab</td>
+                                </tr>
+                                <tr>
+                                    <td>\v</td>
+                                    <td>ASCII Vertical Tab</td>
+                                </tr>
+                                <tr>
+                                    <td>\ooo</td>
+                                    <td>Character with octal value ooo</td>
+                                </tr>
+                                <tr>
+                                    <td>\xHH</td>
+                                    <td>Character with hexadecimal value HH</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <pre style="max-height: 600px;"><code class="python hljs"><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-keyword">print</span>(<span class="hljs-string">"C:\\Python32\\Lib"</span>)
+C:\Python32\Lib
+
+<span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-keyword">print</span>(<span class="hljs-string">"This is printed\nin two lines"</span>)
+This is printed
+in two lines
+
+<span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-keyword">print</span>(<span class="hljs-string">"This is \x48\x45\x58 representation"</span>)
+This is HEX representation</code></pre>
+                        <p id="raw-string">Đôi khi chúng ta muốn bỏ qua <kbd>escape sequence</kbd> trong một chuỗi. Để làm điều này chúng ta có thể đặt <kbd>r</kbd> hoặc <kbd>R</kbd> trước chuỗi. Điều này có nghĩa là tạo một chuỗi thô và sẽ bỏ qua tất cả <kbd>escape sequence</kbd></p>
+                        <pre style="max-height: 600px;"><code class="python hljs"><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-keyword">print</span>(<span class="hljs-string">"This is \x61 \ngood example"</span>)
+This is a
+good example
+<span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-keyword">print</span>(<span class="hljs-string">r"This is \x61 \ngood example"</span>)
+This is \x61 \ngood example</code></pre>
+                    </div>
+                    <hr>
+                    <div id="list">
+                        <p class="alert alert-info">String like List</p>
+                        <p>Bởi vì <kbd>String</kbd> là một array các ký tự nên có thể sử dụng chuỗi như một danh sách.</p>
+                        <pre class="python-exec" style="max-height: 600px;"><code class="python hljs"><span class="hljs-comment"># Iterating through a string</span>
+count = <span class="hljs-number">0</span>
+<span class="hljs-keyword">for</span> letter <span class="hljs-keyword">in</span> <span class="hljs-string">'Hello World'</span>:
+    <span class="hljs-keyword">if</span>(letter == <span class="hljs-string">'l'</span>):
+        count += <span class="hljs-number">1</span>
+<span class="hljs-keyword">print</span>(count,<span class="hljs-string">'letters found'</span>)
+<span class="hljs-meta">&gt;&gt;&gt; </span>3 letters found</code></pre>
+                        <pre style="max-height: 600px;"><code class="python hljs"><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-string">'a'</span> <span class="hljs-keyword">in</span> <span class="hljs-string">'program'</span>
+<span class="hljs-literal">True</span>
+<span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-string">'at'</span> <span class="hljs-keyword">not</span> <span class="hljs-keyword">in</span> <span class="hljs-string">'battle'</span>
+<span class="hljs-literal">False</span></code></pre>
+                    </div>
+                    <hr>
+                    <div id="format">
+                        <p class="alert alert-info">String format (Updating...)</p>
+                        <p>Xem thêm:</p>
+                        <ul>
+                            <li><a target="_blank" href="../io/output-formatting.html">Output formatting</a></li>
+                            <li><a target="_blank" href="https://www.programiz.com/python-programming/methods/string/format">format()</a></li>
+                        </ul>
+                    </div>
+                    <hr>
+                    <div id="method">
+                        <p class="alert alert-info">String method (Updating...)</p>
+                        <p>Xem thêm:</p>
+                        <ul>
+                            <li><a target="_blank" href="https://www.programiz.com/python-programming/methods/string">String method</a></li>
+                        </ul>
+                    </div>
+                </section>
+                <hr>
+            </div>
+            <div class="col-md-12">
+                <p>Nguồn:</p>
+                <ul>
+                    <li><a href="https://www.geeksforgeeks.org/python-strings/?ref=lbp">GreeksForGreeks</a></li>
+                    <li><a href="https://www.programiz.com/python-programming/string">Programiz</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!--    END MAIN CONTENT-->
+
+    <input type="hidden" id="url-header" value="../../../content.json">
+
+    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="../../../js/main.js"></script>
+</body>
+</html>
