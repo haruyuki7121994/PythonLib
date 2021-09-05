@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>List</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="../../../css/style.css">
+</head>
+<body>
+    <!--    HEADER-->
+    <section id="header-section"></section>
+    <br>
+    <!--    END HEADER-->
+
+    <!--    MAIN CONTENT-->
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <section id="menu">
+                    <p class="font-weight-bold">Menu</p>
+                    <ul>
+                        <li><a href="#introduction">Giới thiệu</a></li>
+                        <li><a href="#create">Tạo List</a></li>
+                        <li><a href="#access">Truy cập List</a></li>
+                        <li><a href="#add">Thêm List</a></li>
+                        <li><a href="#change">Sửa List</a></li>
+                        <li><a href="#delete-remove">Xóa List</a></li>
+                        <li><a href="#slice">Cắt List</a></li>
+                        <li><a href="#methods">Các phương thức</a></li>
+                        <li><a href="#comprehension">List comprehension</a></li>
+                        <li><a href="#operations">List operations</a></li>
+                    </ul>
+                </section>
+                <hr>
+                <section id="main">
+                    <div id="introduction">
+                        <p class="alert alert-info">Introduction</p>
+                        <p><kbd>List</kbd> cũng giống như mảng có kích thước động. Các phần tử trong List không cần phải đồng nhất, điều này làm cho nó trở thành một công cụ mạnh mẽ và sử dụng nhiều trong Python.</p>
+                        <p class="font-weight-bold">Các đặc điểm của <kbd>List</kbd></p>
+                        <ul>
+                            <li>Kích thước có thể thay đổi</li>
+                            <li>Danh sách được sắp xếp theo thứ tự và có số lượng xác định</li>
+                            <li>Các phần tử được lập index và index đầu tiên là <kbd>0</kbd></li>
+                            <li>Các phần tử có thể là nhiều kiểu dữ liệu khác nhau như <kbd>int</kbd> <kbd>string</kbd> <kbd>object</kbd> etc...</li>
+                            <li>Các phần tử có thể được thay đổi ngay cả sau khi tạo, khác với <kbd>String</kbd> <kbd>Tuple</kbd> <kbd>Set</kbd></li>
+                        </ul>
+                    </div>
+                    <hr>
+                    <div id="create">
+                        <p class="alert alert-info">Create List</p>
+                        <p><kbd>List</kbd> có thể được tạo bằng cách đặt nhiều kiểu dữ liệu giống hoặc khác nhau bên trong dấu ngoặc vuông <kbd>[]</kbd>, phân cách nhau bằng <kbd>,</kbd></p>
+                        <p><kbd>List</kbd> không cần một hàm built-in để khởi tạo, các phần tử bên trong có thể thay đổi.</p>
+                        <pre style="max-height: 600px;"><code class="python hljs"><span class="hljs-comment"># empty list</span>
+my_list = []
+
+<span class="hljs-comment"># list of integers</span>
+my_list = [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>]
+
+<span class="hljs-comment"># list with mixed data types</span>
+my_list = [<span class="hljs-number">1</span>, <span class="hljs-string">"Hello"</span>, <span class="hljs-number">3.4</span>]
+
+<span class="hljs-comment"># nested list</span>
+my_list = [<span class="hljs-string">"mouse"</span>, [<span class="hljs-number">8</span>, <span class="hljs-number">4</span>, <span class="hljs-number">6</span>], [<span class="hljs-string">'a'</span>]]</code></pre>
+                    </div>
+                    <hr>
+                    <div id="access">
+                        <p class="alert alert-info">Access List</p>
+                        <p>Sử dụng <kbd>index</kbd> để truy cập một phần tử trong danh sách</p>
+                        <p class="font-weight-bold">Các đặc điểm của <kbd>index</kbd> trong List:</p>
+                        <ul>
+                            <li>Chỉ mục phải là số <kbd>integer</kbd> có thể âm hoặc dương. Không thể sử dụng kiểu float hoặc các kiểu khác nếu không sẽ báo lỗi <kbd>TypeError</kbd></li>
+                            <li>Nếu truy cập index ngoài phạm vi sẽ báo lỗi <kbd>IndexError</kbd></li>
+                            <li>Danh sách lồng truy cập bằng cách sử dụng index lồng</li>
+                        </ul>
+                        <pre class="python-exec" style="max-height: 600px;"><code class="python hljs"><span class="hljs-comment"># List indexing</span>
+
+my_list = [<span class="hljs-string">'p'</span>, <span class="hljs-string">'r'</span>, <span class="hljs-string">'o'</span>, <span class="hljs-string">'b'</span>, <span class="hljs-string">'e'</span>]
+
+<span class="hljs-comment"># Output: p</span>
+<span class="hljs-keyword">print</span>(my_list[<span class="hljs-number">0</span>])
+
+<span class="hljs-comment"># Output: o</span>
+<span class="hljs-keyword">print</span>(my_list[<span class="hljs-number">2</span>])
+
+<span class="hljs-comment"># Output: e</span>
+<span class="hljs-keyword">print</span>(my_list[<span class="hljs-number">4</span>])
+
+<span class="hljs-comment"># Nested List</span>
+n_list = [<span class="hljs-string">"Happy"</span>, [<span class="hljs-number">2</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">5</span>]]
+
+<span class="hljs-comment"># Nested indexing</span>
+<span class="hljs-keyword">print</span>(n_list[<span class="hljs-number">0</span>][<span class="hljs-number">1</span>])
+
+<span class="hljs-keyword">print</span>(n_list[<span class="hljs-number">1</span>][<span class="hljs-number">3</span>])
+
+<span class="hljs-comment"># Error! Only integer can be used for indexing</span>
+<span class="hljs-keyword">print</span>(my_list[<span class="hljs-number">4.0</span>])</code></pre>
+                        <pre><code class="python hljs"><span class="hljs-comment"># Negative indexing in lists</span>
+my_list = [<span class="hljs-string">'p'</span>,<span class="hljs-string">'r'</span>,<span class="hljs-string">'o'</span>,<span class="hljs-string">'b'</span>,<span class="hljs-string">'e'</span>]
+
+<span class="hljs-comment"># Output: e</span>
+<span class="hljs-keyword">print</span>(my_list[<span class="hljs-number">-1</span>])
+
+<span class="hljs-comment"># Output: p</span>
+<span class="hljs-keyword">print</span>(my_list[<span class="hljs-number">-5</span>])</code></pre>
+                        <img style="width: 100%; border: 1px solid #d3dce6;border-radius: 4px;" src="https://cdn.programiz.com/sites/tutorial2program/files/python-list-index.png" alt="">
+                    </div>
+                    <hr>
+                    <div id="add">
+                        <p class="alert alert-info">Add List</p>
+                        <p class="font-weight-bold">Một số phương pháp sử dụng để thêm 1 hoặc nhiều phần tử vào danh sách:</p>
+                        <ul>
+                            <li><code>append()</code>: thêm một phần tử vào cuối danh sách</li>
+                            <li><code>insert()</code>: thêm một phần tử vào vị trí cụ thể</li>
+                            <li><code>extend()</code>: thêm nhiều phần tử vào cuối danh sách</li>
+                            <li>Sử dụng toán tử <kbd>+</kbd> để hợp 2 danh sách. Gọi là <kbd>concatenation</kbd></li>
+                            <li>Sử dụng toán tử <kbd>*</kbd> để lập lại số lần của danh sách</li>
+                            <li>Sử dụng <kbd>Slice</kbd> để thêm 1 hoặc nhiều phần tử tại vị trí cụ thể</li>
+                        </ul>
+                        <pre class="python-exec" style="max-height: 600px;"><code class="python hljs"><span class="hljs-comment"># Appending and Extending lists in Python</span>
+odd = [<span class="hljs-number">1</span>, <span class="hljs-number">3</span>, <span class="hljs-number">5</span>]
+
+odd.append(<span class="hljs-number">7</span>)
+
+<span class="hljs-keyword">print</span>(odd)
+<span class="hljs-meta">&gt;&gt;&gt; </span>[1, 3, 5, 7]
+
+odd.extend([<span class="hljs-number">9</span>, <span class="hljs-number">11</span>, <span class="hljs-number">13</span>])
+
+<span class="hljs-keyword">print</span>(odd)
+<span class="hljs-meta">&gt;&gt;&gt; </span>[1, 3, 5, 7, 9, 11, 13]</code></pre>
+                        <pre class="python-exec" style="max-height: 600px;"><code class="python hljs"><span class="hljs-comment"># Concatenating and repeating lists</span>
+odd = [<span class="hljs-number">1</span>, <span class="hljs-number">3</span>, <span class="hljs-number">5</span>]
+
+<span class="hljs-keyword">print</span>(odd + [<span class="hljs-number">9</span>, <span class="hljs-number">7</span>, <span class="hljs-number">5</span>])
+<span class="hljs-meta">&gt;&gt;&gt; </span>[1, 3, 5, 9, 7, 5]
+
+<span class="hljs-keyword">print</span>([<span class="hljs-string">"re"</span>] * <span class="hljs-number">3</span>)
+<span class="hljs-meta">&gt;&gt;&gt; </span>['re', 're', 're']</code></pre>
+                        <pre class="python-exec" style="max-height: 600px;"><code class="python hljs"><span class="hljs-comment"># Demonstration of list insert() method</span>
+odd = [<span class="hljs-number">1</span>, <span class="hljs-number">9</span>]
+odd.insert(<span class="hljs-number">1</span>,<span class="hljs-number">3</span>)
+
+<span class="hljs-keyword">print</span>(odd)
+<span class="hljs-meta">&gt;&gt;&gt; </span>[1, 3, 9]
+
+odd[<span class="hljs-number">2</span>:<span class="hljs-number">2</span>] = [<span class="hljs-number">5</span>, <span class="hljs-number">7</span>]
+
+<span class="hljs-keyword">print</span>(odd)
+<span class="hljs-meta">&gt;&gt;&gt; </span>[1, 3, 5, 7, 9]</code></pre>
+                    </div>
+                    <hr>
+                    <div id="change">
+                        <p class="alert alert-info">Change List</p>
+                        <p><kbd>List</kbd> có thể thay đổi bằng cách sử dụng toán tử <kbd>=</kbd> để thay đổi giá trị của 1 hoặc nhiều phần tử</p>
+                        <pre class="python-exec" style="max-height: 600px;"><code class="python hljs"><span class="hljs-comment"># Correcting mistake values in a list</span>
+odd = [<span class="hljs-number">2</span>, <span class="hljs-number">4</span>, <span class="hljs-number">6</span>, <span class="hljs-number">8</span>]
+
+<span class="hljs-comment"># change the 1st item    </span>
+odd[<span class="hljs-number">0</span>] = <span class="hljs-number">1</span>
+
+<span class="hljs-keyword">print</span>(odd)
+<span class="hljs-meta">&gt;&gt;&gt; </span>[1, 4, 6, 8]
+
+<span class="hljs-comment"># change 2nd to 4th items</span>
+odd[<span class="hljs-number">1</span>:<span class="hljs-number">4</span>] = [<span class="hljs-number">3</span>, <span class="hljs-number">5</span>, <span class="hljs-number">7</span>]
+
+<span class="hljs-keyword">print</span>(odd)
+<span class="hljs-meta">&gt;&gt;&gt; </span>[1, 3, 5, 7]</code></pre>
+                    </div>
+                    <hr>
+                    <div id="delete-remove">
+                        <p class="alert alert-info">Delete/Remove List</p>
+                        <p class="font-weight-bold">Một số phương pháp sử dụng để xóa 1 hoặc nhiều phần tử hoặc toàn bộ danh sách:</p>
+                        <ul>
+                            <li><code>del</code>: xóa 1, nhiều hoặc toàn bộ phần tử</li>
+                            <li><code>remove()</code>: xóa một phần tử, nhận giá trị làm tham số input</li>
+                            <li><code>pop()</code>: xóa một phần tử và trả về giá trị cuối cùng nếu <kbd>index</kbd> không được cung cấp. Điều này giúp triển khai List dưới dạng <kbd>Stack</kbd></li>
+                            <li>Sử dụng <kbd>Slice</kbd> để xóa 1 hoặc nhiều phần tử bằng cách gán một List trống</li>
+                        </ul>
+                        <pre class="python-exec" style="max-height: 600px;"><code class="python hljs"><span class="hljs-comment"># Deleting list items</span>
+my_list = [<span class="hljs-string">'p'</span>, <span class="hljs-string">'r'</span>, <span class="hljs-string">'o'</span>, <span class="hljs-string">'b'</span>, <span class="hljs-string">'l'</span>, <span class="hljs-string">'e'</span>, <span class="hljs-string">'m'</span>]
+
+<span class="hljs-comment"># delete one item</span>
+<span class="hljs-keyword">del</span> my_list[<span class="hljs-number">2</span>]
+<span class="hljs-keyword">print</span>(my_list)
+<span class="hljs-meta">&gt;&gt;&gt; </span>['p', 'r', 'b', 'l', 'e', 'm']
+
+<span class="hljs-comment"># delete multiple items</span>
+<span class="hljs-keyword">del</span> my_list[<span class="hljs-number">1</span>:<span class="hljs-number">5</span>]
+<span class="hljs-keyword">print</span>(my_list)
+<span class="hljs-meta">&gt;&gt;&gt; </span>['p', 'm']
+
+<span class="hljs-comment"># delete entire list</span>
+<span class="hljs-keyword">del</span> my_list
+
+<span class="hljs-comment"># Error: List not defined</span>
+<span class="hljs-keyword">print</span>(my_list)
+<span class="hljs-meta">&gt;&gt;&gt; </span>Traceback (most recent call last):
+File "&lt;string&gt;", line 18, in &lt;module&gt;
+NameError: name 'my_list' is not defined</samp></code></pre>
+                            <pre class="python-exec" style="max-height: 600px;"><code class="python hljs">my_list = [<span class="hljs-string">'p'</span>,<span class="hljs-string">'r'</span>,<span class="hljs-string">'o'</span>,<span class="hljs-string">'b'</span>,<span class="hljs-string">'l'</span>,<span class="hljs-string">'e'</span>,<span class="hljs-string">'m'</span>]
+my_list.remove(<span class="hljs-string">'p'</span>)
+
+<span class="hljs-comment"># Output: ['r', 'o', 'b', 'l', 'e', 'm']</span>
+<span class="hljs-keyword">print</span>(my_list)
+
+<span class="hljs-comment"># Output: 'o'</span>
+<span class="hljs-keyword">print</span>(my_list.pop(<span class="hljs-number">1</span>))
+
+<span class="hljs-comment"># Output: ['r', 'b', 'l', 'e', 'm']</span>
+<span class="hljs-keyword">print</span>(my_list)
+
+<span class="hljs-comment"># Output: 'm'</span>
+<span class="hljs-keyword">print</span>(my_list.pop())
+
+<span class="hljs-comment"># Output: ['r', 'b', 'l', 'e']</span>
+<span class="hljs-keyword">print</span>(my_list)
+
+my_list.clear()
+
+<span class="hljs-comment"># Output: []</span>
+<span class="hljs-keyword">print</span>(my_list)</code></pre>
+                        <pre style="max-height: 600px;"><code class="python hljs"><span class="hljs-meta">&gt;&gt;&gt; </span>my_list = [<span class="hljs-string">'p'</span>,<span class="hljs-string">'r'</span>,<span class="hljs-string">'o'</span>,<span class="hljs-string">'b'</span>,<span class="hljs-string">'l'</span>,<span class="hljs-string">'e'</span>,<span class="hljs-string">'m'</span>]
+<span class="hljs-meta">&gt;&gt;&gt; </span>my_list[<span class="hljs-number">2</span>:<span class="hljs-number">3</span>] = []
+<span class="hljs-meta">&gt;&gt;&gt; </span>my_list
+[<span class="hljs-string">'p'</span>, <span class="hljs-string">'r'</span>, <span class="hljs-string">'b'</span>, <span class="hljs-string">'l'</span>, <span class="hljs-string">'e'</span>, <span class="hljs-string">'m'</span>]
+<span class="hljs-meta">&gt;&gt;&gt; </span>my_list[<span class="hljs-number">2</span>:<span class="hljs-number">5</span>] = []
+<span class="hljs-meta">&gt;&gt;&gt; </span>my_list
+[<span class="hljs-string">'p'</span>, <span class="hljs-string">'r'</span>, <span class="hljs-string">'m'</span>]</code></pre>
+                    </div>
+                    <hr>
+                    <div id="slice">
+                        <p class="alert alert-info">Slice List</p>
+                         <pre class="python-exec" style="max-height: 600px;"><code class="python hljs">Syntax: <span class="hljs-keyword">[start : stop : steps]</span>
+<span class="font-weight-bold">Parameters: </span>
+     <span class="font-weight-bold">start: </span>index bắt đầu, default là 0
+     <span class="font-weight-bold">end: </span>index kết thúc, default là index cuối cùng của danh sách
+     <span class="font-weight-bold">step: </span>bước nhảy lập qua danh sách, default là 1</code></pre>
+                        <pre class="python-exec" style="max-height: 600px;"><code class="python hljs"><span class="hljs-comment"># List slicing in Python</span>
+my_list = [<span class="hljs-string">'p'</span>,<span class="hljs-string">'r'</span>,<span class="hljs-string">'o'</span>,<span class="hljs-string">'g'</span>,<span class="hljs-string">'r'</span>,<span class="hljs-string">'a'</span>,<span class="hljs-string">'m'</span>,<span class="hljs-string">'i'</span>,<span class="hljs-string">'z'</span>]
+
+<span class="hljs-comment"># elements 3rd to 5th</span>
+<span class="hljs-keyword">print</span>(my_list[<span class="hljs-number">2</span>:<span class="hljs-number">5</span>])
+<span class="hljs-meta">&gt;&gt;&gt; </span>['o', 'g', 'r']
+
+<span class="hljs-comment"># elements beginning to 4th</span>
+<span class="hljs-keyword">print</span>(my_list[:<span class="hljs-number">-5</span>])
+<span class="hljs-meta">&gt;&gt;&gt; </span>['p', 'r', 'o', 'g']
+
+<span class="hljs-comment"># elements 6th to end</span>
+<span class="hljs-keyword">print</span>(my_list[<span class="hljs-number">5</span>:])
+<span class="hljs-meta">&gt;&gt;&gt; </span>['a', 'm', 'i', 'z']
+
+<span class="hljs-comment"># elements beginning to end</span>
+<span class="hljs-keyword">print</span>(my_list[:])
+<span class="hljs-meta">&gt;&gt;&gt; </span>['p', 'r', 'o', 'g', 'r', 'a', 'm', 'i', 'z']
+
+<span class="hljs-comment">#  below list has numbers from 2 to 8 in step 2</span>
+<span class="hljs-keyword">print</span>(my_list[<span class="hljs-number">1</span>:<span class="hljs-number">8</span>:<span class="hljs-number">2</span>])
+<span class="hljs-meta">&gt;&gt;&gt; </span>['r', 'g', 'a', 'i']</code></pre>
+                    </div>
+                    <hr>
+                    <div id="methods">
+                        <p class="alert alert-info">List Methods</p>
+                        <p>Các <kbd>methods</kbd> có sẵn của List được liệt kê theo bảng dưới đây:</p>
+                        <table class="table">
+                            <tbody class="thead-dark">
+                                <tr>
+                                    <th>Python List Methods</th>
+                                </tr>
+                                <tr>
+                                    <td><strong>append() - </strong>Thêm phần tử vào cuối danh sách</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>extend() - </strong>Thêm tất cả phần tử từ một list vào một list khác</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>insert() - </strong>Thêm phần tử với index cụ thể</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>remove() - </strong>Xóa phần tử trong danh sách</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>pop() - </strong>Xóa và trả về phần tử với index cụ thể</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>clear()</strong> - Xóa tất cả phần tử trong danh sách</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>index()</strong> - Trả về index đầu tiên khớp với phần tử</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>count()</strong> - Đếm số phần tử xuất hiện trong danh sách</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>sort()</strong> - Sắp xếp danh sách theo thứ tự tăng dần</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>reverse()</strong> - Đảo ngược thứ tự trong danh sách</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>copy()</strong> - Copy danh sách</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <p class="font-weight-bold">Xem thêm:</p>
+                        <ul>
+                            <li><a href="https://www.programiz.com/python-programming/methods/list">List Methods</a></li>
+                        </ul>
+                    </div>
+                    <hr>
+                    <div id="comprehension">
+                        <p class="alert alert-info">List Comprehension</p>
+                        <p><kbd>List comprehension</kbd> là một cách đơn giản và ngắn gọn để tạo một List mới từ một <kbd>Tuple</kbd> <kbd>String</kbd> <kbd>Array</kbd> <kbd>List</kbd> etc...</p>
+                        <p class="font-weight-bold">Xem thêm:</p>
+                        <ul>
+                            <li><a href="https://www.geeksforgeeks.org/python-list-comprehension-and-slicing/">GreeksForGreeks-1</a></li>
+                            <li><a href="https://www.geeksforgeeks.org/python-list-comprehension/">GreeksForGreeks-2</a></li>
+                            <li><a href="https://www.geeksforgeeks.org/nested-list-comprehensions-in-python/">GreeksForGreeks-3</a></li>
+                            <li><a href="https://www.programiz.com/python-programming/list-comprehension/">Programiz-3</a></li>
+                        </ul>
+                    </div>
+                    <hr>
+                    <div id="operations">
+                        <p class="alert alert-info">List Operations</p>
+                        <ul>
+                            <li>Sử dụng từ khóa <kbd>in</kbd> để kiểm tra một phần tử có tồn tại trong List hay không</li>
+                            <li>Sử dụng <kbd>for</kbd> để lập qua từng phần tử trong List</li>
+                        </ul>
+                        <pre class="python-exec" style="max-height: 600px;"><code class="python hljs">my_list = [<span class="hljs-string">'p'</span>, <span class="hljs-string">'r'</span>, <span class="hljs-string">'o'</span>, <span class="hljs-string">'b'</span>, <span class="hljs-string">'l'</span>, <span class="hljs-string">'e'</span>, <span class="hljs-string">'m'</span>]
+
+<span class="hljs-comment"># Output: True</span>
+<span class="hljs-keyword">print</span>(<span class="hljs-string">'p'</span> <span class="hljs-keyword">in</span> my_list)
+
+<span class="hljs-comment"># Output: False</span>
+<span class="hljs-keyword">print</span>(<span class="hljs-string">'a'</span> <span class="hljs-keyword">in</span> my_list)
+
+<span class="hljs-comment"># Output: True</span>
+<span class="hljs-keyword">print</span>(<span class="hljs-string">'c'</span> <span class="hljs-keyword">not</span> <span class="hljs-keyword">in</span> my_list)</code></pre>
+                        <pre class="python-exec" style="max-height: 600px;"><code class="python hljs"><span class="hljs-keyword">for</span> fruit <span class="hljs-keyword">in</span> [<span class="hljs-string">'apple'</span>,<span class="hljs-string">'banana'</span>,<span class="hljs-string">'mango'</span>]:
+<span class="hljs-keyword">print</span>(<span class="hljs-string">"I like"</span>,fruit)
+<span class="hljs-meta">&gt;&gt;&gt; </span>I like apple
+I like banana
+I like mango</code></pre>
+                    </div>
+                </section>
+                <hr>
+            </div>
+            <div class="col-md-12">
+                <p>Nguồn:</p>
+                <ul>
+                    <li><a href="https://www.geeksforgeeks.org/python-list/?ref=lbp#lc">GreeksForGreeks</a></li>
+                    <li><a href="https://www.programiz.com/python-programming/list">Programiz</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!--    END MAIN CONTENT-->
+
+    <input type="hidden" id="url-header" value="../../../content.json">
+
+    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="../../../js/main.js"></script>
+</body>
+</html>
