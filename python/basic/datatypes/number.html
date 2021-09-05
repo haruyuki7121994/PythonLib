@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Number</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="../../../css/style.css">
+</head>
+<body>
+    <!--    HEADER-->
+    <section id="header-section"></section>
+    <br>
+    <!--    END HEADER-->
+
+    <!--    MAIN CONTENT-->
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <p class="font-weight-bold">Menu</p>
+                <ul>
+                    <li><a href="#number">Kiểu số</a></li>
+                    <li><a href="#conversion">Chuyển đổi kiểu số</a></li>
+                    <li><a href="#decimal">Module Decimal</a></li>
+                    <li><a href="#fractions">Module Fractions</a></li>
+                    <li><a href="#math&random">Module Math & Random</a></li>
+                </ul>
+
+                <p class="alert alert-info">Number Data Type</p>
+                <p id="number">Python hỗ trợ kiểu <kbd>integer</kbd> <kbd>float</kbd> <kbd>complex</kbd> Chúng được định nghĩa là các <kbd>Class</kbd> int, float, complex trong Python.</p>
+                <p><kbd>integer</kbd> và <kbd>float</kbd> được phân tách nhau bằng có hoặc không có dấu thập phân. Ví dụ: 5 là integer, 5.0 là float.</p>
+                <p><kbd>complex</kbd> được có syntax là <kdb>x + yj</kdb> trong đó x là phần thực và yj là phần ảo.</p>
+                <p>Chúng ta có thể sử dụng hàm <code>type()</code> để biết biến hoặc giá trị thuộc về lớp nào. Hàm <code>isinstance()</code> để kiểm tra xem nó có thuộc một lớp cụ thể nào không.</p>
+                <pre class="python-exec" style="max-height: 600px;"><code class="python hljs">a = <span class="hljs-number">5</span>
+
+<span class="hljs-keyword">print</span>(type(a))
+<span class="hljs-meta">&gt;&gt;&gt; </span>&lt;class 'int'&gt;
+
+<span class="hljs-keyword">print</span>(type(<span class="hljs-number">5.0</span>))
+<span class="hljs-meta">&gt;&gt;&gt; </span>&lt;class 'float'&gt;
+
+c = <span class="hljs-number">5</span> + <span class="hljs-number">3j</span>
+<span class="hljs-keyword">print</span>(c + <span class="hljs-number">3</span>)
+<span class="hljs-meta">&gt;&gt;&gt; </span>(8 + 3j)
+
+<span class="hljs-keyword">print</span>(isinstance(c, complex))
+<span class="hljs-meta">&gt;&gt;&gt; </span>True</code></pre>
+                <p>Trong khi <kbd>integer</kbd> có thể có độ dài bất kỳ. <kbd>float</kbd> chỉ chính xác đến <kbd>15</kbd> chữ số thập phân (vị trí thứ 16 là không chính xác).</p>
+                <p>Python cũng hỗ trợ biểu diễn cơ số 2 <kbd>binary</kbd>, cơ số 16 <kbd>hexadecimal</kbd>, cơ số 8 <kbd>octal</kbd> theo bảng tiền tố dưới đây:</p>
+                <table class="table">
+                    <tbody class="thead-dark">
+                        <tr>
+                            <th>Number System</th>
+                            <th>Prefix</th>
+                        </tr>
+                        <tr>
+                            <td>Binary</td>
+                            <td>'0b' or '0B'</td>
+                        </tr>
+                        <tr>
+                            <td>Octal</td>
+                            <td>'0o' or '0O'</td>
+                        </tr>
+                        <tr>
+                            <td>Hexadecimal</td>
+                            <td>'0x' or '0X'</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <pre class="python-exec" style="max-height: 600px;"><code class="python hljs"><span class="hljs-comment"># Output: 107</span>
+<span class="hljs-keyword">print</span>(<span class="hljs-number">0b1101011</span>)
+
+<span class="hljs-comment"># Output: 253 (251 + 2)</span>
+<span class="hljs-keyword">print</span>(<span class="hljs-number">0xFB</span> + <span class="hljs-number">0b10</span>)
+
+<span class="hljs-comment"># Output: 13</span>
+<span class="hljs-keyword">print</span>(<span class="hljs-number">0o15</span>)</code></pre>
+                <hr>
+
+                <p class="alert alert-info">Type Conversion</p>
+                <p id="conversion">Chúng ta có thể chuyển đổi 1 kiểu số thành một kiểu số khác. Đây được gọi là <kbd>coercion</kbd> (sự ép buộc).</p>
+                <p>Các phép toán như <kbd>+</kbd> <kbd>-</kbd> sẽ chuyển đổi số có kiểu <kbd>integer</kbd> sang kiểu <kbd>float</kbd> hoàn toàn tự động. Nếu một trong các toán hạng là <kbd>float</kbd></p>
+                <pre style="max-height: 600px;"><code class="python hljs"><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-number">1</span> + <span class="hljs-number">2.0</span>
+<span class="hljs-number">3.0</span></code></pre>
+                <p>Chúng ta có thể thấy rằng số 1 bị ép thành số 1.0 để cộng và kết quả là kiểu <kbd>float</kbd></p>
+                <p>Chúng ta cũng có thể sử dụng các hàm <code>int()</code> <code>float()</code> <code>complex()</code> để chuyển đổi giữa các kiểu số. Các hàm này có thể chuyển đổi từ chuỗi.</p>
+                <pre style="max-height: 600px;"><code class="python hljs"><span class="hljs-meta">&gt;&gt;&gt; </span>int(<span class="hljs-number">2.3</span>)
+<span class="hljs-number">2</span>
+<span class="hljs-meta">&gt;&gt;&gt; </span>int(<span class="hljs-number">-2.8</span>)
+<span class="hljs-number">-2</span>
+<span class="hljs-meta">&gt;&gt;&gt; </span>float(<span class="hljs-number">5</span>)
+<span class="hljs-number">5.0</span>
+<span class="hljs-meta">&gt;&gt;&gt; </span>complex(<span class="hljs-string">'3+5j'</span>)
+(<span class="hljs-number">3</span>+<span class="hljs-number">5j</span>)</code></pre>
+                <hr>
+
+                <p class="alert alert-info">Module Decimal</p>
+                <p id="decimal">Class <kbd>float</kbd> được tích hợp sẵn trong Python thực hiện một số phép tính không giống như chúng ta suy nghĩ. Ví dụ tổng 1.1 + 2.2 = 3.3</p>
+                <pre style="max-height: 600px;"><code class="python hljs"><span class="hljs-meta">&gt;&gt;&gt; </span>(<span class="hljs-number">1.1</span> + <span class="hljs-number">2.2</span>) == <span class="hljs-number">3.3</span>
+<span class="hljs-literal">False</span></code></pre>
+                <p>Kiểu <kbd>float</kbd> được thực hiện trong phần cứng máy tính dưới dạng số nhị phân ví máy tính chỉ hiểu được số nhị phân. Vì lý do này, hầu hết các số thập phân mà chúng ta biết không thể lưu trữ một cách chính xác trong máy tính. Ví dụ: chúng ta không thể biểu diễn phân số 1/3 dưới dạng phân số thập phân. Điều này sẽ cho 0.3333333... dài vô hạn và máy tính chỉ có thể lưu hữu hạn.</p>
+                <p>Nó chỉ ra rằng phân số thập phân 0.1 sẽ được lưu dưới dạng nhị phân vô hạn 0.000110011001100110011... và máy tính chỉ có thể lưu hữu hạn. Dẫn đến số được lưu gần đúng 0.1 nhưng không bao giờ bằng nhau. Đó là hạn chế của phần cứng máy tính chứ không phải lỗi của Python</p>
+                <p>Để khắc phục vấn đề này, chúng ta sử dụng module <kbd>Decimal</kbd> Trong khi các số <kbd>float</kbd> được lưu hữu hạn 15 chữ số thì module này có độ chính xác do người dùng thiết lập. Module này được sử dụng khi chúng ta muốn thực hiện các phép tính thập phân như chúng ta suy nghĩ.</p>
+                <pre class="python-exec" style="max-height: 600px;"><code class="python hljs"><span class="hljs-keyword">from</span> decimal <span class="hljs-keyword">import</span> Decimal <span class="hljs-keyword">as</span> D
+
+<span class="hljs-keyword">print</span>(D(<span class="hljs-string">'1.1'</span>) + D(<span class="hljs-string">'2.2'</span>))
+<span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-number">3.3</span>
+
+<span class="hljs-keyword">print</span>(D(<span class="hljs-string">'1.2'</span>) * D(<span class="hljs-string">'2.50'</span>))
+<span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-number">3.000</span></code></pre>
+                <p><span class="font-weight-bold">Lưu ý: </span> Các phép toàn thực hiện bằng kiểu số <kbd>float</kbd> được thực hiện nhanh hơn phép toán <kbd>Decimal</kbd> Vì lý do này chúng ta không triển khai Decimal mọi lúc thay vì kiểu float. Vậy khi nào chúng ta sử dụng Decimal thay vì float?</p>
+                <ul>
+                    <li>Khi tạo ra các ứng dụng tài chính cần số thập phân chính xác</li>
+                    <li>Khi muốn kiểm soát độ chính xác</li>
+                    <li>Khi muốn triển khai các khái niệm về số thập phân</li>
+                </ul>
+                <hr>
+
+                <p class="alert alert-info">Module Fractions</p>
+                <p id="fractions">Python cung cấp các phép toán liên quan đến phân số thông qua module <kbd>fractions</kbd></p>
+                <p>Một phân số có tử số và mẫu số, cả 2 đều là số nguyên. Module này có hỗ trợ cho số học hữu tỉ.</p>
+                <pre class="python-exec" style="max-height: 600px;"><code class="python hljs"><span class="hljs-keyword">import</span> fractions
+
+<span class="hljs-keyword">print</span>(fractions.Fraction(<span class="hljs-number">1.5</span>))
+<span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-number">3/2</span>
+
+<span class="hljs-keyword">print</span>(fractions.Fraction(<span class="hljs-number">5</span>))
+<span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-number">5</span>
+
+<span class="hljs-keyword">print</span>(fractions.Fraction(<span class="hljs-number">1</span>,<span class="hljs-number">3</span>))
+<span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-number">1/3</span></code></pre>
+                <p>Khi tạo phân số từ số float, chúng ta có thể sẽ nhận được phân số không muốn. Bởi vì số float ko được lưu chính xác. Lúc đó, chúng ta phải khởi tạo phân số từ chuỗi được cung cấp từ module <kbd>fractions</kbd></p>
+                <pre class="python-exec" style="max-height: 600px;"><code class="python hljs"><span class="hljs-keyword">import</span> fractions
+
+<span class="hljs-comment"># As float</span>
+<span class="hljs-comment"># Output: 2476979795053773/2251799813685248</span>
+<span class="hljs-keyword">print</span>(fractions.Fraction(<span class="hljs-number">1.1</span>))
+
+<span class="hljs-comment"># As string</span>
+<span class="hljs-comment"># Output: 11/10</span>
+<span class="hljs-keyword">print</span>(fractions.Fraction(<span class="hljs-string">'1.1'</span>))</code></pre>
+                <hr>
+
+                <p class="alert alert-info">Module Math & Random</p>
+                <p id="math&random">Khi muốn thực hiện các phép toán về lượng giác, logarit, xác xuất, thống kê... Python cũng cung cấp 2 module quan trọng để thực hiện các phép toán này là <kbd>math</kbd> và <kbd>random</kbd></p>
+                <pre class="python-exec" style="max-height: 600px;"><code class="python hljs"><span class="hljs-keyword">import</span> math
+
+<span class="hljs-keyword">print</span>(math.pi)
+<span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-number">3.141592653589793</span>
+
+<span class="hljs-keyword">print</span>(math.cos(math.pi))
+<span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-number">-1.0</span>
+
+<span class="hljs-keyword">print</span>(math.exp(<span class="hljs-number">10</span>))
+<span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-number">22026.465794806718</span>
+
+<span class="hljs-keyword">print</span>(math.log10(<span class="hljs-number">1000</span>))
+<span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-number">3.0</span>
+
+<span class="hljs-keyword">print</span>(math.sinh(<span class="hljs-number">1</span>))
+<span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-number">1.1752011936438014</span>
+
+<span class="hljs-keyword">print</span>(math.factorial(<span class="hljs-number">6</span>))
+<span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-number">720</span></code></pre>
+                <pre class="python-exec" style="max-height: 600px;"><code class="python hljs"><span class="hljs-keyword">import</span> random
+
+<span class="hljs-keyword">print</span>(random.randrange(<span class="hljs-number">10</span>, <span class="hljs-number">20</span>))
+
+x = [<span class="hljs-string">'a'</span>, <span class="hljs-string">'b'</span>, <span class="hljs-string">'c'</span>, <span class="hljs-string">'d'</span>, <span class="hljs-string">'e'</span>]
+
+<span class="hljs-comment"># Get random choice</span>
+<span class="hljs-keyword">print</span>(random.choice(x))
+<span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-number">18</span>
+
+<span class="hljs-comment"># Shuffle x</span>
+random.shuffle(x)
+<span class="hljs-meta">&gt;&gt;&gt; </span>e
+
+<span class="hljs-comment"># Print the shuffled x</span>
+<span class="hljs-keyword">print</span>(x)
+<span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-number">['c', 'e', 'd', 'b', 'a']</span>
+
+<span class="hljs-comment"># Print random element</span>
+<span class="hljs-keyword">print</span>(random.random())
+<span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-number">0.5682821194654443</span></code></pre>
+                <hr>
+            </div>
+            <div class="col-md-12">
+                <p>Nguồn:</p>
+                <ul>
+                    <li><a href="https://www.programiz.com/python-programming/numbers">Number</a></li>
+                    <li><a href="https://www.programiz.com/python-programming/modules/math">Math Module</a></li>
+                    <li><a href="https://www.programiz.com/python-programming/modules/random">Random Module</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!--    END MAIN CONTENT-->
+
+    <input type="hidden" id="url-header" value="../../../content.json">
+
+    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="../../../js/main.js"></script>
+</body>
+</html>
