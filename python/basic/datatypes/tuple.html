@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Tuple</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="../../../css/style.css">
+</head>
+<body>
+    <!--    HEADER-->
+    <section id="header-section"></section>
+    <br>
+    <!--    END HEADER-->
+
+    <!--    MAIN CONTENT-->
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <section id="menu">
+                    <p class="font-weight-bold">Menu</p>
+                    <ul>
+                        <li><a href="#introduction">Giới thiệu</a></li>
+                        <li><a href="#create">Tạo chuỗi</a></li>
+                        <li><a href="#change-delete">Sửa-Xóa chuỗi</a></li>
+                        <li><a href="#escape-sequence">Escape sequence</a></li>
+                        <li><a href="#raw-string">Chuỗi thô</a></li>
+                        <li><a href="#format">Chuyển đổi chuỗi</a></li>
+                        <li><a href="#method">Phương thức chuỗi</a></li>
+                    </ul>
+                </section>
+                <hr>
+                <section id="main">
+                    <div id="introduction">
+                        <p class="alert alert-info">Introduction</p>
+                        <p>Trong Python, <kbd>tuple</kbd> tương tự như <kbd>list</kbd> Sự khác biệt là với <kbd>tuple</kbd> chúng ta không thể thêm, xóa, sửa các phần tử sau khi nó được gán trong khi <kbd>list</kbd> có thể tự do thực hiện trên đó.</p>
+                        <p class="font-weight-bold">Các đặc điểm của <kbd>tuple</kbd></p>
+                        <ul>
+                            <li>Các phần tử không thể thay đổi</li>
+                            <li>Danh sách được sắp xếp theo thứ tự ,có số lượng xác định, phân tách nhau bằng dấu <kbd>,</kbd></li>
+                            <li>Các phần tử được lập index và index đầu tiên là <kbd>0</kbd></li>
+                            <li>Các phần tử có thể là nhiều kiểu dữ liệu khác nhau như <kbd>int</kbd> <kbd>string</kbd> <kbd>object</kbd> etc...</li>
+                        </ul>
+                    </div>
+                    <hr>
+                    <div id="create">
+                        <p class="alert alert-info">Create Tuple</p>
+                        <p>Các <kbd>Tuple</kbd> được tạo bằng cách đặt những giá trị phân tách bằng dấu <kbd>,</kbd> Có hoặc không sử dụng dấu <kbd>()</kbd> để nhóm dữ liệu.</p>
+                        <p><span class="font-weight-bold">Note: </span> Việc tạo tuple mà không sử dụng <kbd>()</kbd> được gọi là <kbd>Tuple Packing</kbd> có số lượng ko hạn định và thuộc bất kỳ kiểu dữ liệu nào.</p>
+                        <pre class="python-exec" style="max-height: 600px;"><code class="python hljs"><span class="hljs-comment"># Different types of tuples</span>
+
+<span class="hljs-comment"># Empty tuple</span>
+<span class="hljs-comment"># Output: ()</span>
+my_tuple = ()
+<span class="hljs-keyword">print</span>(my_tuple)
+
+<span class="hljs-comment"># Tuple having integers</span>
+<span class="hljs-comment"># Output: (1, 2, 3)</span>
+my_tuple = (<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>)
+<span class="hljs-keyword">print</span>(my_tuple)
+
+<span class="hljs-comment"># tuple with mixed datatypes</span>
+<span class="hljs-comment"># Output: (1, 'Hello', 3.4)</span>
+my_tuple = (<span class="hljs-number">1</span>, <span class="hljs-string">"Hello"</span>, <span class="hljs-number">3.4</span>)
+<span class="hljs-keyword">print</span>(my_tuple)
+
+<span class="hljs-comment"># nested tuple</span>
+<span class="hljs-comment"># Output: ('mouse', [8, 4, 6], (1, 2, 3))</span>
+my_tuple = (<span class="hljs-string">"mouse"</span>, [<span class="hljs-number">8</span>, <span class="hljs-number">4</span>, <span class="hljs-number">6</span>], (<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>))
+<span class="hljs-keyword">print</span>(my_tuple)</code></pre>
+                        <pre class="python-exec" style="max-height: 600px;"><code class="python hljs"><span class="hljs-comment"># Output: (3, 4.6, 'dog')</span>
+my_tuple = <span class="hljs-number">3</span>, <span class="hljs-number">4.6</span>, <span class="hljs-string">"dog"</span>
+<span class="hljs-keyword">print</span>(my_tuple)
+
+<span class="hljs-comment"># tuple unpacking is also possible</span>
+a, b, c = my_tuple
+
+<span class="hljs-keyword">print</span>(a)      <span class="hljs-comment"># 3</span>
+<span class="hljs-keyword">print</span>(b)      <span class="hljs-comment"># 4.6</span>
+<span class="hljs-keyword">print</span>(c)      <span class="hljs-comment"># dog</span></code></pre>
+
+                        <p>Tạo <kbd>tuple</kbd> với một phần tử có một chút khó khăn. Chúng ta sẽ cần một dấu <kbd>,</kbd> ở cuối để chỉ định cho Python hiểu rằng đây là một <kbd>tuple</kbd></p>
+                        <pre class="python-exec" style="max-height: 600px;"><code class="python hljs">my_tuple = (<span class="hljs-string">"hello"</span>)
+<span class="hljs-keyword">print</span>(type(my_tuple))  <span class="hljs-comment"># &lt;class 'str'&gt;</span>
+
+<span class="hljs-comment"># Creating a tuple having one element</span>
+my_tuple = (<span class="hljs-string">"hello"</span>,)
+<span class="hljs-keyword">print</span>(type(my_tuple))  <span class="hljs-comment"># &lt;class 'tuple'&gt;</span>
+
+<span class="hljs-comment"># Parentheses is optional</span>
+my_tuple = <span class="hljs-string">"hello"</span>,
+<span class="hljs-keyword">print</span>(type(my_tuple))  <span class="hljs-comment"># &lt;class 'tuple'&gt;</span></code></pre>
+                    </div>
+                    <hr>
+                    <div id="access">
+                        <p class="alert alert-info">Access Tuple</p>
+                        <p>Một vài cách để truy cập các phần tử trong <kbd>tuple</kbd></p>
+                        <ul>
+                            <li>Indexing</li>
+                            <li>Slicing</li>
+                            <li>Unpacking</li>
+                        </ul>
+                        <h4 class="font-weight-bold">1. Indexing</h4>
+                        <ul>
+                            <li>Chỉ mục phải là số <kbd>integer</kbd> có thể âm hoặc dương. Không thể sử dụng kiểu float hoặc các kiểu khác nếu không sẽ báo lỗi <kbd>TypeError</kbd></li>
+                            <li>Nếu truy cập index ngoài phạm vi sẽ báo lỗi <kbd>IndexError</kbd></li>
+                            <li>Danh sách lồng truy cập bằng cách sử dụng index lồng</li>
+                        </ul>
+                        <pre class="python-exec" style="max-height: 600px;"><code class="python hljs"><span class="hljs-comment"># Accessing tuple elements using indexing</span>
+my_tuple = (<span class="hljs-string">'p'</span>,<span class="hljs-string">'e'</span>,<span class="hljs-string">'r'</span>,<span class="hljs-string">'m'</span>,<span class="hljs-string">'i'</span>,<span class="hljs-string">'t'</span>)
+
+<span class="hljs-keyword">print</span>(my_tuple[<span class="hljs-number">0</span>])   <span class="hljs-comment"># 'p' </span>
+<span class="hljs-keyword">print</span>(my_tuple[<span class="hljs-number">5</span>])   <span class="hljs-comment"># 't'</span>
+
+<span class="hljs-comment"># IndexError: list index out of range</span>
+<span class="hljs-comment"># print(my_tuple[6])</span>
+
+<span class="hljs-comment"># Index must be an integer</span>
+<span class="hljs-comment"># TypeError: list indices must be integers, not float</span>
+<span class="hljs-comment"># my_tuple[2.0]</span>
+
+<span class="hljs-comment"># nested tuple</span>
+n_tuple = (<span class="hljs-string">"mouse"</span>, [<span class="hljs-number">8</span>, <span class="hljs-number">4</span>, <span class="hljs-number">6</span>], (<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>))
+
+<span class="hljs-comment"># nested index</span>
+<span class="hljs-keyword">print</span>(n_tuple[<span class="hljs-number">0</span>][<span class="hljs-number">3</span>])       <span class="hljs-comment"># 's'</span>
+<span class="hljs-keyword">print</span>(n_tuple[<span class="hljs-number">1</span>][<span class="hljs-number">1</span>])       <span class="hljs-comment"># 4</span></code></pre>
+                        <pre class="python-exec" style="max-height: 600px;"><code class="python hljs"><span class="hljs-comment"># Negative indexing for accessing tuple elements</span>
+my_tuple = (<span class="hljs-string">'p'</span>, <span class="hljs-string">'e'</span>, <span class="hljs-string">'r'</span>, <span class="hljs-string">'m'</span>, <span class="hljs-string">'i'</span>, <span class="hljs-string">'t'</span>)
+
+<span class="hljs-comment"># Output: 't'</span>
+<span class="hljs-keyword">print</span>(my_tuple[<span class="hljs-number">-1</span>])
+
+<span class="hljs-comment"># Output: 'p'</span>
+<span class="hljs-keyword">print</span>(my_tuple[<span class="hljs-number">-6</span>])</code></pre>
+
+                        <h4 class="font-weight-bold">2. Slicing</h4>
+                        <p>Chúng ta có thể truy cập nhiều phần tử trong <kbd>tuple</kbd> bằng cách sử dụng toán tử <kbd>:</kbd></p>
+                        <pre class="python-exec" style="max-height: 600px;"><code class="python hljs"><span class="hljs-comment"># Accessing tuple elements using slicing</span>
+my_tuple = (<span class="hljs-string">'p'</span>,<span class="hljs-string">'r'</span>,<span class="hljs-string">'o'</span>,<span class="hljs-string">'g'</span>,<span class="hljs-string">'r'</span>,<span class="hljs-string">'a'</span>,<span class="hljs-string">'m'</span>,<span class="hljs-string">'i'</span>,<span class="hljs-string">'z'</span>)
+
+<span class="hljs-comment"># elements 2nd to 4th</span>
+<span class="hljs-comment"># Output: ('r', 'o', 'g')</span>
+<span class="hljs-keyword">print</span>(my_tuple[<span class="hljs-number">1</span>:<span class="hljs-number">4</span>])
+
+<span class="hljs-comment"># elements beginning to 2nd</span>
+<span class="hljs-comment"># Output: ('p', 'r')</span>
+<span class="hljs-keyword">print</span>(my_tuple[:<span class="hljs-number">-7</span>])
+
+<span class="hljs-comment"># elements 8th to end</span>
+<span class="hljs-comment"># Output: ('i', 'z')</span>
+<span class="hljs-keyword">print</span>(my_tuple[<span class="hljs-number">7</span>:])
+
+<span class="hljs-comment"># elements beginning to end</span>
+<span class="hljs-comment"># Output: ('p', 'r', 'o', 'g', 'r', 'a', 'm', 'i', 'z')</span>
+<span class="hljs-keyword">print</span>(my_tuple[:])</code></pre>
+
+                        <h4 class="font-weight-bold">3. Unpacking</h4>
+                        <pre class="python-exec" style="max-height: 600px;"><code class="python hljs"><span class="hljs-comment"># Tuple Unpacking</span>
+tuple1 = (<span class="hljs-string">'good'</span>, <span class="hljs-string">'morning'</span>, <span class="hljs-string">'everyone'</span>)
+a, b, c = tuple1
+
+<span class="hljs-comment"># Output: 'good'</span>
+<span class="hljs-keyword">print</span>(a)
+
+<span class="hljs-comment"># Output: 'morning'</span>
+<span class="hljs-keyword">print</span>(b)
+
+<span class="hljs-comment"># Output: 'everyone'</span>
+<span class="hljs-keyword">print</span>(c)</code></pre>
+                    </div>
+                    <hr>
+                    <div id="change">
+                        <p class="alert alert-info">Change Tuple</p>
+                        <p><kbd>Tuple</kbd> là bất biến. Có nghĩa rằng các phần tử trong <kbd>tuple</kbd> không thể thay đổi ngay khi được chỉ định. Nhưng, nếu phần tử của nó là kiểu có thể thay đổi như <kbd>string</kbd> <kbd>list</kbd> thì có thể thay đổi.</p>
+                        <p>Chúng ta có thể chỉ định lại bằng những một tuple khác.</p>
+                        <pre class="python-exec" style="max-height: 600px;"><code class="python hljs"><span class="hljs-comment"># Changing tuple values</span>
+my_tuple = (<span class="hljs-number">4</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, [<span class="hljs-number">6</span>, <span class="hljs-number">5</span>])
+
+<span class="hljs-comment"># TypeError: 'tuple' object does not support item assignment</span>
+<span class="hljs-comment"># my_tuple[1] = 9</span>
+
+<span class="hljs-comment"># However, item of mutable element can be changed</span>
+my_tuple[<span class="hljs-number">3</span>][<span class="hljs-number">0</span>] = <span class="hljs-number">9</span>    <span class="hljs-comment"># Output: (4, 2, 3, [9, 5])</span>
+<span class="hljs-keyword">print</span>(my_tuple)
+
+<span class="hljs-comment"># Tuples can be reassigned</span>
+my_tuple = (<span class="hljs-string">'p'</span>, <span class="hljs-string">'r'</span>, <span class="hljs-string">'o'</span>, <span class="hljs-string">'g'</span>, <span class="hljs-string">'r'</span>, <span class="hljs-string">'a'</span>, <span class="hljs-string">'m'</span>, <span class="hljs-string">'i'</span>, <span class="hljs-string">'z'</span>)
+
+<span class="hljs-comment"># Output: ('p', 'r', 'o', 'g', 'r', 'a', 'm', 'i', 'z')</span>
+<span class="hljs-keyword">print</span>(my_tuple)</code></pre>
+                        <p>Sử dụng toán tử <kbd>+</kbd> để nối 2 tuple. Sử dụng toán tử <kbd>*</kbd> để lập lại số lần của 1 tuple.</p>
+                        <pre class="python-exec" style="max-height: 600px;"><code class="python hljs"><span class="hljs-comment"># Concatenation</span>
+<span class="hljs-comment"># Output: (1, 2, 3, 4, 5, 6)</span>
+<span class="hljs-keyword">print</span>((<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>) + (<span class="hljs-number">4</span>, <span class="hljs-number">5</span>, <span class="hljs-number">6</span>))
+
+<span class="hljs-comment"># Repeat</span>
+<span class="hljs-comment"># Output: ('Repeat', 'Repeat', 'Repeat')</span>
+<span class="hljs-keyword">print</span>((<span class="hljs-string">"Repeat"</span>,) * <span class="hljs-number">3</span>)</code></pre>
+                    </div>
+                    <hr>
+                    <div id="delete">
+                        <p class="alert alert-info">Delete Tuple</p>
+                        <p>Như chúng ta đã biết <kbd>tuple</kbd> là bất biến nên không thể xóa một phần tử. Chỉ có thể xóa toàn bộ tuple.</p>
+                        <pre class="python-exec" style="max-height: 600px;"><code class="python hljs"><span class="hljs-comment"># Deleting tuples</span>
+my_tuple = (<span class="hljs-string">'p'</span>, <span class="hljs-string">'r'</span>, <span class="hljs-string">'o'</span>, <span class="hljs-string">'g'</span>, <span class="hljs-string">'r'</span>, <span class="hljs-string">'a'</span>, <span class="hljs-string">'m'</span>, <span class="hljs-string">'i'</span>, <span class="hljs-string">'z'</span>)
+
+<span class="hljs-comment"># can't delete items</span>
+<span class="hljs-comment"># TypeError: 'tuple' object doesn't support item deletion</span>
+<span class="hljs-comment"># del my_tuple[3]</span>
+
+<span class="hljs-comment"># Can delete an entire tuple</span>
+<span class="hljs-keyword">del</span> my_tuple
+
+<span class="hljs-comment"># NameError: name 'my_tuple' is not defined</span>
+<span class="hljs-keyword">print</span>(my_tuple)</code></pre>
+                    </div>
+                    <hr>
+                    <div id="methods">
+                        <p class="alert alert-info">Tuple Methods</p>
+                        <p>Chỉ có 2 phương thức trong <kbd>tuple</kbd> đó là <code>index()</code> và <code>count()</code></p>
+                        <ul>
+                            <li><code>count()</code>: đếm số lần xuất hiện của 1 phần tử</li>
+                            <li><code>index()</code>: nhận vào giá trị của và trả về index</li>
+                        </ul>
+                        <pre class="python-exec" style="max-height: 600px;"><code class="python hljs">my_tuple = (<span class="hljs-string">'a'</span>, <span class="hljs-string">'p'</span>, <span class="hljs-string">'p'</span>, <span class="hljs-string">'l'</span>, <span class="hljs-string">'e'</span>,)
+
+<span class="hljs-keyword">print</span>(my_tuple.count(<span class="hljs-string">'p'</span>))  <span class="hljs-comment"># Output: 2</span>
+<span class="hljs-keyword">print</span>(my_tuple.index(<span class="hljs-string">'l'</span>))  <span class="hljs-comment"># Output: 3</span></code></pre>
+                    </div>
+                    <hr>
+                    <div id="operations">
+                        <p class="alert alert-info">Tuple Operations</p>
+                        <pre class="python-exec" style="max-height: 600px;"><code class="python hljs"><span class="hljs-comment"># Membership test in tuple</span>
+my_tuple = (<span class="hljs-string">'a'</span>, <span class="hljs-string">'p'</span>, <span class="hljs-string">'p'</span>, <span class="hljs-string">'l'</span>, <span class="hljs-string">'e'</span>,)
+
+<span class="hljs-comment"># In operation</span>
+<span class="hljs-keyword">print</span>(<span class="hljs-string">'a'</span> <span class="hljs-keyword">in</span> my_tuple)
+<span class="hljs-keyword">print</span>(<span class="hljs-string">'b'</span> <span class="hljs-keyword">in</span> my_tuple)
+
+<span class="hljs-comment"># Not in operation</span>
+<span class="hljs-keyword">print</span>(<span class="hljs-string">'g'</span> <span class="hljs-keyword">not</span> <span class="hljs-keyword">in</span> my_tuple)</code></pre>
+                        <pre class="python-exec" style="max-height: 600px;"><code class="python hljs"><span class="hljs-comment"># Using a for loop to iterate through a tuple</span>
+<span class="hljs-keyword">for</span> name <span class="hljs-keyword">in</span> (<span class="hljs-string">'John'</span>, <span class="hljs-string">'Kate'</span>):
+    <span class="hljs-keyword">print</span>(<span class="hljs-string">"Hello"</span>, name)
+
+#Output: Hello John
+         Hello Kate</code></pre>
+                    </div>
+                    <hr>
+                    <div id="advantages">
+                        <p class="alert alert-info">Ưu điểm của <kbd>tuple</kbd> so với <kbd>list</kbd></p>
+                        <p>Vì <kbd>tuple</kbd> khá giống với <kbd>list</kbd> nên cả 2 đều được sử dụng trong những tình huống tương tự nhau. Tuy nhiên, có một số ưu điểm của sử dụng tuple so với list được liệt kê dưới đây:</p>
+                        <ul>
+                            <li>Thường sử dụng <kbd>tuple</kbd> có các kiểu dữ liệu không đồng nhất. Sử dụng <kbd>list</kbd> cho các kiểu dữ liệu đồng nhất.</li>
+                            <li><kbd>Tuple</kbd> là bất biến nên việc <kbd>loop</kbd> qua các giá trị sẽ nhanh hơn với <kbd>list</kbd>. Vì vậy hiệu suất cũng tăng lên.</li>
+                            <li>Các phần tử trong <kbd>Tuple</kbd> là bất biến nên có thể được sử dụng làm <kbd>key</kbd> cho <kbd>dictionary</kbd> Với <kbd>list</kbd> điều này là không thể.</li>
+                            <li>Nếu bạn có dữ liệu không thay đổi, việc riển khai <kbd>tuple</kbd> sẽ đảm bảo rằng nó sẽ được bảo vệ chống sửa.</li>
+                        </ul>
+                    </div>
+                </section>
+                <hr>
+            </div>
+            <div class="col-md-12">
+                <p>Nguồn:</p>
+                <ul>
+                    <li><a href="https://www.geeksforgeeks.org/python-strings/?ref=lbp">GreeksForGreeks</a></li>
+                    <li><a href="https://www.programiz.com/python-programming/string">Programiz</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!--    END MAIN CONTENT-->
+
+    <input type="hidden" id="url-header" value="../../../content.json">
+
+    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="../../../js/main.js"></script>
+</body>
+</html>
