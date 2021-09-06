@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Set</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="../../../css/style.css">
+</head>
+<body>
+    <!--    HEADER-->
+    <section id="header-section"></section>
+    <br>
+    <!--    END HEADER-->
+
+    <!--    MAIN CONTENT-->
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <section id="menu">
+                    <p class="font-weight-bold">Menu</p>
+                    <ul>
+                        <li><a href="#introduction">Giới thiệu</a></li>
+                        <li><a href="#create">Tạo set</a></li>
+                        <li><a href="#access">Truy cập set</a></li>
+                        <li><a href="#add">Thêm set</a></li>
+                        <li><a href="#delete">Xóa set</a></li>
+                        <li><a href="#methods">Các phương thức set</a></li>
+                        <li><a href="#operations">Các hoạt động set</a></li>
+                        <li><a href="#frozenset">Frozenset</a></li>
+                    </ul>
+                </section>
+                <hr>
+                <section id="main">
+                    <div id="introduction">
+                        <p class="alert alert-info">Introduction</p>
+                        <p><kbd>Set</kbd> là một tập hợp các phần tử không có thứ tự, các phần tử là duy nhất (không trùng lặp) và các phần tử phải là bất biến (không thể thay đổi)</p>
+                        <p class="font-weight-bold">Các đặc điểm của <kbd>set</kbd></p>
+                        <ul>
+                            <li>Bản thân <kbd>set</kbd> là một tập hợp có thể thay đổi. Chúng ta có thể thêm hoặc xóa các phần tử. Nhưng không thể sửa một phần tử vì là bất biến</li>
+                            <li>Set có các phép toán về tập hợp riêng như <kbd>union</kbd> <kbd>intersection</kbd> <kbd>symmetric difference</kbd> etc...</li>
+                            <li>Các phần tử có thể là nhiều kiểu dữ liệu khác nhau như <kbd>int</kbd> <kbd>string</kbd> <kbd>tuple</kbd> etc... Nhưng không thể là các phần tử có thể thay đổi như <kbd>list</kbd> <kbd>set</kbd> <kbd>dictionary</kbd></li>
+                        </ul>
+                    </div>
+                    <hr>
+                    <div id="create">
+                        <p class="alert alert-info">Create Set</p>
+                        <p class="font-weight-bold">Có 2 cách để tạo một set:</p>
+                        <ul>
+                            <li>Sử dụng hàm built-in <code>set()</code> với một đối tượng có thể lặp lại</li>
+                            <li>Đặt những phần tử bên trong dấu <kbd>{}</kbd> phân tách nhau bằng dấu <kbd>,</kbd></li>
+                        </ul>
+                        <p><span class="font-weight-bold">Lưu ý: </span> Một <kbd>set</kbd> không thể chứa các phần tử có thể thay đổi như <kbd>list</kbd> <kbd>set</kbd> <kbd>dictionary</kbd></p>
+                        <pre class="python-exec" style="max-height: 600px;"><code class="python hljs"><span class="hljs-comment"># Different types of sets in Python</span>
+<span class="hljs-comment"># set of integers</span>
+<span class="hljs-comment"># Output: {1, 2, 3}</span>
+my_set = {<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>}
+<span class="hljs-keyword">print</span>(my_set)</span>
+
+<span class="hljs-comment"># set of mixed datatypes</span>
+<span class="hljs-comment"># Output: {1.0, (1, 2, 3), 'Hello'}</span>
+my_set = {<span class="hljs-number">1.0</span>, <span class="hljs-string">"Hello"</span>, (<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>)}
+<span class="hljs-keyword">print</span>(my_set)</code></pre>
+                        <pre class="python-exec" style="max-height: 600px;"><code class="python hljs"><span class="hljs-comment"># set cannot have duplicates</span>
+<span class="hljs-comment"># Output: {1, 2, 3, 4}</span>
+my_set = {<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">3</span>, <span class="hljs-number">2</span>}
+<span class="hljs-keyword">print</span>(my_set)
+
+<span class="hljs-comment"># we can make set from a list</span>
+<span class="hljs-comment"># Output: {1, 2, 3}</span>
+my_set = set([<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">2</span>])
+<span class="hljs-keyword">print</span>(my_set)
+
+<span class="hljs-comment"># set cannot have mutable items</span>
+<span class="hljs-comment"># here [3, 4] is a mutable list</span>
+<span class="hljs-comment"># this will cause an error.</span>
+
+my_set = {<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, [<span class="hljs-number">3</span>, <span class="hljs-number">4</span>]}</code></pre>
+                        <p>Tạo một <kbd>set</kbd> trống có một chút khó khăn với dấu <kbd>{}</kbd> vì sẽ tạo ra một <kbd>dictionary</kbd> trống. Thay vào đó để tạo một empty set chúng ta sử dụng hàm <code>set()</code> ko có đối số bên trong.</p>
+                        <pre class="python-exec" style="max-height: 600px;"><code class="python hljs"><span class="hljs-comment"># Distinguish set and dictionary while creating empty set</span>
+
+<span class="hljs-comment"># initialize a with {}</span>
+a = {}
+
+<span class="hljs-comment"># check data type of a</span>
+<span class="hljs-comment"># Output: &lt;class 'dict'&gt;</span>
+<span class="hljs-keyword">print</span>(type(a))
+
+<span class="hljs-comment"># initialize a with set()</span>
+a = set()
+
+<span class="hljs-comment"># check data type of a</span>
+<span class="hljs-comment"># Output: &lt;class 'set'&gt;</span>
+<span class="hljs-keyword">print</span>(type(a))</code></pre>
+                    </div>
+                    <hr>
+                    <div id="access">
+                        <p class="alert alert-info">Access Set</p>
+                        <p>Như ta đã biết <kbd>set</kbd> là tập hợp không có thứ tự nên sẽ không có <kbd>index</kbd> Vì lý do đó không thể truy cập các phần tử bằng cách sử dụng index như các kiểu dữ liệu tập hợp khác. Nhưng có một vài tips sau đây:</p>
+                        <ul>
+                            <li>Sử dụng <kbd>loop</kbd> để lặp qua các phần tử</li>
+                            <li>Sử dụng <kbd>in</kbd> để kiểm tra phần tử có tồn tại hay không</li>
+                        </ul>
+                        <pre class="python-exec" style="max-height: 600px;"><code class="python hljs"><span class="hljs-comment"># initialize a with set()</span>
+set1 = <span class="hljs-keyword">set</span>(<span class="hljs-string">"I love python"</span>)
+
+<span class="hljs-comment"># Using loop for set</span>
+<span class="hljs-comment"># Output: lv Inetoyhp</span>
+<span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> set1:
+    <span class="hljs-keyword">print</span>(i, end='')
+
+<span class="hljs-comment"># Using in for set</span>
+<span class="hljs-comment"># Output: True</span>
+<span class="hljs-keyword">print</span>(<span class="hljs-string">'e'</span> <span class="hljs-keyword">in</span> set1)</code></pre>
+                    </div>
+                    <hr>
+                    <div id="add">
+                        <p class="alert alert-info">Add Set</p>
+                        <p><kbd>Set</kbd> có thể thay đổi. Nhưng không thể sử dụng <kbd>index</kbd> và <kbd>slicing</kbd> để thêm hoặc thay đổi các phần tử. Chúng ta có thể thêm bằng các hàm built-in có sẵn:</p>
+                        <ul>
+                            <li><code>add()</code>: thêm một phần tử tại một thời điểm. Không thể thêm các phần tử có thể thay đổi như <kbd>list</kbd> <kbd>dictionary</kbd> <kbd>set</kbd></li>
+                            <li><code>update()</code>: thêm nhiều phần tử tại một thời điểm. Nhận vào là <kbd>list</kbd> <kbd>string</kbd> <kbd>tuple</kbd></li>
+                        </ul>
+                        <p><span class="font-weight-bold">Lưu ý:</span> Trong tất cả trường hợp các phần tử trùng sẽ bị tránh</p>
+                        <pre class="python-exec" style="max-height: 600px;"><code class="python hljs"><span class="hljs-comment"># initialize my_set</span>
+my_set = {<span class="hljs-number">1</span>, <span class="hljs-number">3</span>}
+<span class="hljs-keyword">print</span>(my_set)
+
+<span class="hljs-comment"># my_set[0]</span>
+<span class="hljs-comment"># if you uncomment the above line</span>
+<span class="hljs-comment"># you will get an error</span>
+<span class="hljs-comment"># TypeError: 'set' object does not support indexing</span>
+
+<span class="hljs-comment"># add an element</span>
+<span class="hljs-comment"># Output: {1, 2, 3}</span>
+my_set.add(<span class="hljs-number">2</span>)
+<span class="hljs-keyword">print</span>(my_set)
+
+<span class="hljs-comment"># add multiple elements</span>
+<span class="hljs-comment"># Output: {1, 2, 3, 4}</span>
+my_set.update([<span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>])
+<span class="hljs-keyword">print</span>(my_set)
+
+<span class="hljs-comment"># add list and set</span>
+<span class="hljs-comment"># Output: {1, 2, 3, 4, 5, 6, 8}</span>
+my_set.update([<span class="hljs-number">4</span>, <span class="hljs-number">5</span>], {<span class="hljs-number">1</span>, <span class="hljs-number">6</span>, <span class="hljs-number">8</span>})
+<span class="hljs-keyword">print</span>(my_set)</code></pre>
+                    </div>
+                    <hr>
+                    <div id="delete">
+                        <p class="alert alert-info">Delete Set</p>
+                        <p class="font-weight-bold">Một số hàm sau đây được sử dụng để xóa phần tử khỏi set</p>
+                        <ul>
+                            <li><code>discard()</code>: xóa phần tử trong set nhận vào đối số là giá trị</li>
+                            <li><code>remove()</code>: xóa phần tử trong set nhận vào đối số là giá trị, nếu giá trị không tồn tại trong <kbd>set</kbd> sẽ báo lỗi <kbd>KeyError</kbd></li>
+                            <li><code>pop()</code>: xóa tùy ý một phần tử khỏi set. Gây ra lỗi <kbd>KeyError</kbd> nếu set rỗng</li>
+                            <li><code>clear()</code>: xóa tất cả phần tử khỏi set</li>
+                        </ul>
+                        <pre class="python-exec" style="max-height: 600px;"><code class="python hljs"><span class="hljs-comment"># Difference between discard() and remove()</span>
+
+<span class="hljs-comment"># initialize my_set</span>
+my_set = {<span class="hljs-number">1</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">5</span>, <span class="hljs-number">6</span>}
+<span class="hljs-keyword">print</span>(my_set)
+
+<span class="hljs-comment"># discard an element</span>
+<span class="hljs-comment"># Output: {1, 3, 5, 6}</span>
+my_set.discard(<span class="hljs-number">4</span>)
+<span class="hljs-keyword">print</span>(my_set)
+
+<span class="hljs-comment"># remove an element</span>
+<span class="hljs-comment"># Output: {1, 3, 5}</span>
+my_set.remove(<span class="hljs-number">6</span>)
+<span class="hljs-keyword">print</span>(my_set)
+
+<span class="hljs-comment"># discard an element</span>
+<span class="hljs-comment"># not present in my_set</span>
+<span class="hljs-comment"># Output: {1, 3, 5}</span>
+my_set.discard(<span class="hljs-number">2</span>)
+<span class="hljs-keyword">print</span>(my_set)
+
+<span class="hljs-comment"># remove an element</span>
+<span class="hljs-comment"># not present in my_set</span>
+<span class="hljs-comment"># you will get an error.</span>
+<span class="hljs-comment"># Output: KeyError</span>
+
+my_set.remove(<span class="hljs-number">2</span>)</code></pre>
+                        <pre class="python-exec" style="max-height: 600px;"><code class="python hljs"><span class="hljs-comment"># initialize my_set</span>
+<span class="hljs-comment"># Output: set of unique elements</span>
+my_set = set(<span class="hljs-string">"HelloWorld"</span>)
+<span class="hljs-keyword">print</span>(my_set)
+
+<span class="hljs-comment"># pop an element</span>
+<span class="hljs-comment"># Output: random element</span>
+<span class="hljs-keyword">print</span>(my_set.pop())
+
+<span class="hljs-comment"># pop another element</span>
+my_set.pop()
+<span class="hljs-keyword">print</span>(my_set)
+
+<span class="hljs-comment"># clear my_set</span>
+<span class="hljs-comment"># Output: set()</span>
+my_set.clear()
+<span class="hljs-keyword">print</span>(my_set)</code></pre>
+
+                    </div>
+                    <hr>
+                    <div id="methods">
+                        <p class="alert alert-info">Set Methods</p>
+                        <p>Nguồn:</p>
+                        <ul>
+                            <li><a href="https://www.programiz.com/python-programming/methods/set">Set Methods</a></li>
+                        </ul>
+                        <p>Có nhiều phương thức trong <kbd>set</kbd> được liệt kê dưới đây:</p>
+                        <table class="table">
+                            <tbody class="thead-dark">
+                                <tr>
+                                    <th>Method</th>
+                                    <th>Description</th>
+                                </tr>
+                                <tr>
+                                    <td><a href="/python-programming/methods/set/add">add()</a></td>
+                                    <td>Thêm một phần tử</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="/python-programming/methods/set/clear">clear()</a></td>
+                                    <td>Xóa toàn bộ phần tử</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="/python-programming/methods/set/copy">copy()</a></td>
+                                    <td>Copy một set</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="/python-programming/methods/set/difference">difference()</a></td>
+                                    <td>Lọc những phần khác nhau của 2 hoặc nhiều set</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="/python-programming/methods/set/difference_update">difference_update()</a>
+                                    </td>
+                                    <td>Xóa tất cả phần tử của một set khác từ set này</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="/python-programming/methods/set/discard">discard()</a></td>
+                                    <td>Xóa phần tử khỏi set</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="/python-programming/methods/set/intersection">intersection()</a></td>
+                                    <td>Giao của 2 set</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <a href="/python-programming/methods/set/intersection_update">intersection_update()</a>
+                                    </td>
+                                    <td>Cập nhật set bằng việc giao của nó với set khác</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="/python-programming/methods/set/isdisjoint">isdisjoint()</a></td>
+                                    <td>Trả về <code>True</code> nếu 2 set ko có giao</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="/python-programming/methods/set/issubset">issubset()</a></td>
+                                    <td>Trả về <code>True</code> nếu set khác không tồn tại trong set này</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="/python-programming/methods/set/issuperset">issuperset()</a></td>
+                                    <td>Trả về <code>True</code> nếu set này không tồn tại trong set khác</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="/python-programming/methods/set/pop">pop()</a></td>
+                                    <td>Xóa và trả về bất kỳ phần tử nào của set. Báo lỗi <code>KeyError</code> nếu set là empty
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><a href="/python-programming/methods/set/remove">remove()</a></td>
+                                    <td>Xóa phần tử trong set. Nếu không có tồn tại phần tử, báo lỗi <code>KeyError</code>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><a href="/python-programming/methods/set/symmetric_difference">symmetric_difference()</a>
+                                    </td>
+                                    <td>Trả về symmetric difference của 2 set</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="/python-programming/methods/set/symmetric_difference_update">symmetric_difference_update()</a>
+                                    </td>
+                                    <td>Cập nhật set với the symmetric difference của set đó và một set khác</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="/python-programming/methods/set/union">union()</a></td>
+                                    <td>Trả về hợp của 2 set</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="/python-programming/methods/set/update">update()</a></td>
+                                    <td>Cập nhật set với hợp của nó và set khác</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <hr>
+                    <div id="operations">
+                        <p class="alert alert-info">Set Operations</p>
+                        <pre class="python-exec" style="max-height: 600px;"><code class="python hljs"><span class="hljs-comment"># in keyword in a set</span>
+<span class="hljs-comment"># initialize my_set</span>
+my_set = set(<span class="hljs-string">"apple"</span>)
+
+<span class="hljs-comment"># check if 'a' is present</span>
+<span class="hljs-comment"># Output: True</span>
+<span class="hljs-keyword">print</span>(<span class="hljs-string">'a'</span> <span class="hljs-keyword">in</span> my_set)
+
+<span class="hljs-comment"># check if 'p' is present</span>
+<span class="hljs-comment"># Output: False</span>
+<span class="hljs-keyword">print</span>(<span class="hljs-string">'p'</span> <span class="hljs-keyword">not</span> <span class="hljs-keyword">in</span> my_set)</code></pre>
+                        <pre style="max-height: 600px;"><code class="python hljs"><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-keyword">for</span> letter <span class="hljs-keyword">in</span> set(<span class="hljs-string">"apple"</span>):
+<span class="hljs-meta">... </span>    <span class="hljs-keyword">print</span>(letter)
+<span class="hljs-meta">... </span>
+a
+p
+e
+l</code></pre>
+                    </div>
+                    <hr>
+                    <div id="frozenset">
+                        <p class="alert alert-info">Frozenset</p>
+                        <p>Frozenset là một lớp mới có những đặc điểm của <kbd>set</kbd> Nhưng kích thước sẽ không thay đổi sau khi được gán. <kbd>Tuple</kbd> là list bất biến, thì <kbd>Frozenset</kbd> là set bất biến</p>
+                        <p><kbd>Set</kbd> là tập hợp có thể thay đổi nên không thể dùng làm <kbd>key</kbd> cho <kbd>dictionary</kbd> thì <kbd>frozenset</kbd> là bất biến nên có thể làm khóa cho dictionary</p>
+                        <p>Frozenset được khởi tạo bằng hàm <code>frozenset()</code></p>
+                        <p>Fronzenset là bất biến nên không có thêm - cập nhât - xóa các phần tử</p>
+                        <p>Frozenset có các phương thức như <code>copy()</code>, <code>difference()</code>, <code>intersection()</code>, <code>isdisjoint()</code>, <code>issubset()</code>, <code>issuperset()</code>, <code>symmetric_difference()</code>, <code>union()</code></p>
+                        <pre style="max-height: 600px;"><code class="python hljs"><span class="hljs-comment"># Frozensets</span>
+<span class="hljs-comment"># initialize A and B</span>
+A = frozenset([<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>])
+B = frozenset([<span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">5</span>, <span class="hljs-number">6</span>])</code></pre>
+                        <pre style="max-height: 600px;"><code class="python hljs"><span class="hljs-meta">&gt;&gt;&gt; </span>A.isdisjoint(B)
+<span class="hljs-literal">False</span>
+<span class="hljs-meta">&gt;&gt;&gt; </span>A.difference(B)
+frozenset({<span class="hljs-number">1</span>, <span class="hljs-number">2</span>})
+<span class="hljs-meta">&gt;&gt;&gt; </span>A | B
+frozenset({<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">5</span>, <span class="hljs-number">6</span>})
+<span class="hljs-meta">&gt;&gt;&gt; </span>A.add(<span class="hljs-number">3</span>)
+...
+AttributeError: <span class="hljs-string">'frozenset'</span> object has no attribute <span class="hljs-string">'add'</span></code></pre>
+                    </div>
+                </section>
+                <hr>
+            </div>
+            <div class="col-md-12">
+                <p>Nguồn:</p>
+                <ul>
+                    <li><a href="https://www.geeksforgeeks.org/python-sets/?ref=lbp">GreeksForGreeks</a></li>
+                    <li><a href="https://www.programiz.com/python-programming/set">Programiz</a></li>
+                    <li><a href="https://www.programiz.com/python-programming/methods/built-in/frozenset">Frozenset</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!--    END MAIN CONTENT-->
+
+    <input type="hidden" id="url-header" value="../../../content.json">
+
+    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="../../../js/main.js"></script>
+</body>
+</html>
