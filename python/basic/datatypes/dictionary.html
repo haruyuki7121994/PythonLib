@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Dictionary</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="../../../css/style.css">
+</head>
+<body>
+    <!--    HEADER-->
+    <section id="header-section"></section>
+    <br>
+    <!--    END HEADER-->
+
+    <!--    MAIN CONTENT-->
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <section id="menu">
+                    <p class="font-weight-bold">Menu</p>
+                    <ul>
+                        <li><a href="#introduction">Giới thiệu</a></li>
+                        <li><a href="#create">Tạo Dictionary</a></li>
+                        <li><a href="#access">Truy cập Dictionary</a></li>
+                        <li><a href="#add-update">Thêm/Cập nhật Dictionary</a></li>
+                        <li><a href="#delete">Xóa Dictionary</a></li>
+                        <li><a href="#methods">Các phương thức Dictionary</a></li>
+                        <li><a href="#comprehension">Comprehension Dictionary</a></li>
+                        <li><a href="#operations">Các hoạt động Dictionary</a></li>
+                    </ul>
+                </section>
+                <hr>
+                <section id="main">
+                    <div id="introduction">
+                        <p class="alert alert-info">Introduction</p>
+                        <p><kbd>Dictionary</kbd> là một tập hợp các phần tử không có thứ tự, được sử dụng để lưu trữ các giá trị như Map (<kbd>key-value</kbd>)</p>
+                        <p class="font-weight-bold">Các đặc điểm của <kbd>dictionary</kbd></p>
+                        <ul>
+                            <li><kbd>Dictionary</kbd> là một tập hợp có thể thay đổi nhưng không sắp xếp theo thứ tự</li>
+                            <li>Một phần tử được lưu bằng cặp <kbd>key-value</kbd></li>
+                            <li><kbd>Value</kbd> có thể là bất kỳ kiểu dữ liệu nào và có thể trùng nhau. Nhưng <kbd>key</kbd> phải thuộc loại bất biến và phải là duy nhất (có phân biệt chữ hoa chữ thường)</li>
+                        </ul>
+                    </div>
+                    <hr>
+                    <div id="create">
+                        <p class="alert alert-info">Create Dictionary</p>
+                        <p><kbd>Dictionary</kbd> có thể được tạo bằng cách đặt những giá trị trong dấu <kbd>{}</kbd>, được phân cách bằng dấu <kbd>,</kbd> hoặc sử dụng hàm built-in <code>dict()</code>. Một phần tử chứa một cặp <kbd>key-value</kbd></p>
+                        <pre style="max-height: 600px;"><code class="python hljs"><span class="hljs-comment"># empty dictionary</span>
+my_dict = {}
+
+<span class="hljs-comment"># dictionary with integer keys</span>
+my_dict = {<span class="hljs-number">1</span>: <span class="hljs-string">'apple'</span>, <span class="hljs-number">2</span>: <span class="hljs-string">'ball'</span>}
+
+<span class="hljs-comment"># dictionary with mixed keys</span>
+my_dict = {<span class="hljs-string">'name'</span>: <span class="hljs-string">'John'</span>, <span class="hljs-number">1</span>: [<span class="hljs-number">2</span>, <span class="hljs-number">4</span>, <span class="hljs-number">3</span>]}
+
+<span class="hljs-comment"># using dict()</span>
+my_dict = dict({<span class="hljs-number">1</span>:<span class="hljs-string">'apple'</span>, <span class="hljs-number">2</span>:<span class="hljs-string">'ball'</span>})
+
+<span class="hljs-comment"># from sequence having each item as a pair</span>
+my_dict = dict([(<span class="hljs-number">1</span>,<span class="hljs-string">'apple'</span>), (<span class="hljs-number">2</span>,<span class="hljs-string">'ball'</span>)])</code></pre>
+                    </div>
+                    <hr>
+                    <div id="access">
+                        <p class="alert alert-info">Access Dictionary</p>
+                        <p><kbd>Dictionary</kbd> là kiểu dữ liệu không có thứ tự cho nên sẽ không thể sử dụng index để truy cập.</p>
+                        <p class="font-weight-bold">Có 2 cách để truy cập 1 phần tử trong dictionary</p>
+                        <ul>
+                            <li>Sử dụng <kbd>key</kbd> nằm trong dấu <kbd>[]</kbd> Nếu không tìm thấy key trong dict thì sẽ báo lỗi <kbd>KeyError</kbd></li>
+                            <li>Sử dụng hàm <code>get()</code> với đối số là <kbd>key</kbd> Nếu không tìm thấy key trong dict thì sẽ trả về <kbd>None</kbd></li>
+                        </ul>
+                        <p><span class="font-weight-bold">Note: </span>Sử dụng khóa lồng nếu muốn truy cập dictionary lồng</p>
+                        <pre class="python-exec" style="max-height: 600px;"><code class="python hljs"><span class="hljs-comment"># get vs [] for retrieving elements</span>
+my_dict = {<span class="hljs-string">'name'</span>: <span class="hljs-string">'Jack'</span>, <span class="hljs-string">'age'</span>: <span class="hljs-number">26</span>}
+
+<span class="hljs-comment"># Output: Jack</span>
+<span class="hljs-keyword">print</span>(my_dict[<span class="hljs-string">'name'</span>])
+
+<span class="hljs-comment"># Output: 26</span>
+<span class="hljs-keyword">print</span>(my_dict.get(<span class="hljs-string">'age'</span>))
+
+<span class="hljs-comment"># Trying to access keys which doesn't exist throws error</span>
+<span class="hljs-comment"># Output None</span>
+<span class="hljs-keyword">print</span>(my_dict.get(<span class="hljs-string">'address'</span>))
+
+<span class="hljs-comment"># KeyError</span>
+<span class="hljs-keyword">print</span>(my_dict[<span class="hljs-string">'address'</span>])</code></pre>
+                    </div>
+                    <hr>
+                    <div id="add-update">
+                        <p class="alert alert-info">Add Dictionary</p>
+                        <p>Chúng ta có thể dễ dàng thêm hoặc sửa giá trị của một phần tử bằng toán tử <kbd>=</kbd></p>
+                        <pre style="max-height: 600px;"><code class="python hljs">Syntax: <span class="hljs-keyword">Dict[Key] = Value</span>
+<span class="font-weight-bold">Nếu key tồn tại trong dict</span>: cập nhật giá trị mới tại vị trí key đó
+<span class="font-weight-bold">Nếu key không tồn tại trong dict</span>: thêm cặp key-value mới vào dict</code></pre>
+                        <pre class="python-exec" style="max-height: 600px;"><code class="python hljs"><span class="hljs-comment"># Changing and adding Dictionary Elements</span>
+my_dict = {<span class="hljs-string">'name'</span>: <span class="hljs-string">'Jack'</span>, <span class="hljs-string">'age'</span>: <span class="hljs-number">26</span>}
+
+<span class="hljs-comment"># update value</span>
+my_dict[<span class="hljs-string">'age'</span>] = <span class="hljs-number">27</span>
+
+<span class="hljs-comment">#Output: {'age': 27, 'name': 'Jack'}</span>
+<span class="hljs-keyword">print</span>(my_dict)
+
+<span class="hljs-comment"># add item</span>
+my_dict[<span class="hljs-string">'address'</span>] = <span class="hljs-string">'Downtown'</span>
+
+<span class="hljs-comment"># Output: {'address': 'Downtown', 'age': 27, 'name': 'Jack'}</span>
+<span class="hljs-keyword">print</span>(my_dict)</code></pre>
+                    </div>
+                    <hr>
+                    <div id="delete">
+                        <p class="alert alert-info">Delete/Remove Dictionary</p>
+                        <p class="font-weight-bold">Có 4 cách để xóa một, nhiều phần tử hoặc toàn bộ dictionary:</p>
+                        <ul>
+                            <li><code>pop()</code>: xóa 1 phần tử cụ thể trong dict với đối số là <kbd>key</kbd> và trả về <kbd>value</kbd> Nếu key không tồn tại thì sẽ báo lỗi <kbd>KeyError</kbd></li>
+                            <li><code>popitem()</code>: xóa 1 phần tử bất kỳ trong dict</li>
+                            <li><code>clear()</code>: xóa tất cả phần tử trong dict</li>
+                            <li><kbd>del</kbd>: xóa toàn bộ hoặc 1 phần của dict</li>
+                        </ul>
+                        <pre class="python-exec" style="max-height: 600px;"><code class="python hljs"><span class="hljs-comment"># Removing elements from a dictionary</span>
+
+<span class="hljs-comment"># create a dictionary</span>
+squares = {<span class="hljs-number">1</span>: <span class="hljs-number">1</span>, <span class="hljs-number">2</span>: <span class="hljs-number">4</span>, <span class="hljs-number">3</span>: <span class="hljs-number">9</span>, <span class="hljs-number">4</span>: <span class="hljs-number">16</span>, <span class="hljs-number">5</span>: <span class="hljs-number">25</span>}
+
+<span class="hljs-comment"># remove a particular item, returns its value</span>
+<span class="hljs-comment"># Output: 16</span>
+<span class="hljs-keyword">print</span>(squares.pop(<span class="hljs-number">4</span>))
+
+<span class="hljs-comment"># Output: {1: 1, 2: 4, 3: 9, 5: 25}</span>
+<span class="hljs-keyword">print</span>(squares)
+
+<span class="hljs-comment"># remove an arbitrary item, return (key,value)</span>
+<span class="hljs-comment"># Output: (5, 25)</span>
+<span class="hljs-keyword">print</span>(squares.popitem())
+
+<span class="hljs-comment"># Output: {1: 1, 2: 4, 3: 9}</span>
+<span class="hljs-keyword">print</span>(squares)
+
+<span class="hljs-comment"># remove all items</span>
+squares.clear()
+
+<span class="hljs-comment"># Output: {}</span>
+<span class="hljs-keyword">print</span>(squares)
+
+<span class="hljs-comment"># delete the dictionary itself</span>
+<span class="hljs-keyword">del</span> squares
+
+<span class="hljs-comment"># Throws Error</span>
+<span class="hljs-keyword">print</span>(squares)</code></pre>
+                    </div>
+                    <hr>
+                    <div id="methods">
+                        <p class="alert alert-info">Dictionary Methods</p>
+                        <p>Nguồn:</p>
+                        <ul>
+                            <li><a href="https://www.programiz.com/python-programming/methods/dictionary">Dictionary Methods</a></li>
+                        </ul>
+                        <table class="table">
+                            <tbody class="thead-dark">
+                                <tr>
+                                    <th>Method</th>
+                                    <th>Description</th>
+                                </tr>
+                                <tr>
+                                    <td><a href="/python-programming/methods/dictionary/clear">clear()</a></td>
+                                    <td>Removes all items from the dictionary.</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="/python-programming/methods/dictionary/copy">copy()</a></td>
+                                    <td>Returns a shallow copy of the dictionary.</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="/python-programming/methods/dictionary/fromkeys">fromkeys(seq[, v])</a>
+                                    </td>
+                                    <td>Returns a new dictionary with keys from <var>seq</var> and value equal to
+                                        <var>v</var> (defaults to <code>None</code>).
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><a href="/python-programming/methods/dictionary/get">get(key[,d])</a></td>
+                                    <td>Returns the value of the <var>key</var>. If the <var>key</var> does not exist,
+                                        returns <var>d</var> (defaults to <code>None</code>).
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><a href="/python-programming/methods/dictionary/items">items()</a></td>
+                                    <td>Return a new object of the dictionary's items in (key, value) format.</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="/python-programming/methods/dictionary/keys">keys()</a></td>
+                                    <td>Returns a new object of the dictionary's keys.</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="/python-programming/methods/dictionary/pop">pop(key[,d])</a></td>
+                                    <td>Removes the item with the <var>key</var> and returns its value or <var>d</var> if
+                                        <var>key</var> is not found. If <var>d</var> is not provided and the <var>key</var>
+                                        is not found, it raises <code>KeyError</code>.
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><a href="/python-programming/methods/dictionary/popitem">popitem()</a></td>
+                                    <td>Removes and returns an arbitrary item (<strong>key, value</strong>). Raises <code>KeyError</code>
+                                        if the dictionary is empty.
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><a href="/python-programming/methods/dictionary/setdefault">setdefault(key[,d])</a>
+                                    </td>
+                                    <td>Returns the corresponding value if the <var>key</var> is in the dictionary. If not,
+                                        inserts the <var>key</var> with a value of <var>d</var> and returns <var>d</var>
+                                        (defaults to <code>None</code>).
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><a href="/python-programming/methods/dictionary/update">update([other])</a></td>
+                                    <td>Updates the dictionary with the key/value pairs from <var>other</var>, overwriting
+                                        existing keys.
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><a href="/python-programming/methods/dictionary/values">values()</a></td>
+                                    <td>Returns a new object of the dictionary's values</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <hr>
+                    <div id="comprehension">
+                        <p class="alert alert-info">Dictionary Comprehension</p>
+                        <p><kbd>Dictionary comprehension</kbd> là một cách đơn giản và ngắn gọn để tạo một Dict mới từ một <kbd>Tuple</kbd> <kbd>String</kbd> <kbd>Array</kbd> <kbd>List</kbd> etc...</p>
+                        <p class="font-weight-bold">Xem thêm:</p>
+                        <ul>
+                            <li><a href="https://www.geeksforgeeks.org/python-dictionary-comprehension/">GreeksForGreeks</a></li>
+                            <li><a href="https://www.programiz.com/python-programming/dictionary-comprehension">Programiz</a></li>
+                        </ul>
+                    </div>
+                    <hr>
+                    <div id="operations">
+                        <p class="alert alert-info">Dictionary Operations</p>
+                        <pre class="python-exec" style="max-height: 600px;"><code class="python hljs"><span class="hljs-comment"># Membership Test for Dictionary Keys</span>
+squares = {<span class="hljs-number">1</span>: <span class="hljs-number">1</span>, <span class="hljs-number">3</span>: <span class="hljs-number">9</span>, <span class="hljs-number">5</span>: <span class="hljs-number">25</span>, <span class="hljs-number">7</span>: <span class="hljs-number">49</span>, <span class="hljs-number">9</span>: <span class="hljs-number">81</span>}
+
+<span class="hljs-comment"># Output: True</span>
+<span class="hljs-keyword">print</span>(<span class="hljs-number">1</span> <span class="hljs-keyword">in</span> squares)
+
+<span class="hljs-comment"># Output: True</span>
+<span class="hljs-keyword">print</span>(<span class="hljs-number">2</span> <span class="hljs-keyword">not</span> <span class="hljs-keyword">in</span> squares)
+
+<span class="hljs-comment"># membership tests for key only not value</span>
+<span class="hljs-comment"># Output: False</span>
+<span class="hljs-keyword">print</span>(<span class="hljs-number">49</span> <span class="hljs-keyword">in</span> squares)</code></pre>
+                        <pre class="python-exec" style="max-height: 600px;"><code class="python hljs"><span class="hljs-comment"># Iterating through a Dictionary</span>
+squares = {<span class="hljs-number">1</span>: <span class="hljs-number">1</span>, <span class="hljs-number">3</span>: <span class="hljs-number">9</span>, <span class="hljs-number">5</span>: <span class="hljs-number">25</span>, <span class="hljs-number">7</span>: <span class="hljs-number">49</span>, <span class="hljs-number">9</span>: <span class="hljs-number">81</span>}
+<span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> squares:
+    <span class="hljs-keyword">print</span>(squares[i])
+1
+9
+25
+49
+81</code></pre>
+                    </div>
+                </section>
+                <hr>
+            </div>
+            <div class="col-md-12">
+                <p>Nguồn:</p>
+                <ul>
+                    <li><a href="https://www.geeksforgeeks.org/python-dictionary/?ref=lbp">GreeksForGreeks</a></li>
+                    <li><a href="https://www.programiz.com/python-programming/dictionary">Programiz</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!--    END MAIN CONTENT-->
+
+    <input type="hidden" id="url-header" value="../../../content.json">
+
+    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="../../../js/main.js"></script>
+</body>
+</html>
